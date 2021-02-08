@@ -10,6 +10,17 @@
                 <li><a href="#">商品管理</a></li>
             </ul>
         </div>
+        <div class="container">
+            <div class="about">
+
+            </div>
+            <div class="news">
+                
+            </div>
+        </div>
+        <div class="footer">
+            
+        </div>
     </div>
 </template>
 

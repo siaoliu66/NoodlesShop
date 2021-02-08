@@ -3,7 +3,7 @@
     background-color: rgba(153, 153, 153, 0.3);
     padding-top: 15px;
     padding-bottom: 15px;
-    max-width: 1280px;
+    // max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     position: fixed;     
@@ -50,16 +50,19 @@
             }
         }
     }
-    .showmenu{
-        display: none;
-        // background-image: url("../img/iconfinder_Menu_2190974.png");
-        background-repeat: no-repeat;
-        text-decoration: none;
-        width: 32px;
-        height: 32px;
+    // .showmenu{
+    //     display: none;
+    //     background-image: url("../img/iconfinder_Menu_2190974.png");
+    //     background-repeat: no-repeat;
+    //     text-decoration: none;
+    //     width: 32px;
+    //     height: 32px;
+    // }
+}
+.container{
+    .about{
+        height: 500px;
+        background-color: #f9e9cd;
     }
 }
 
- .clearfix{
-    clear: both;
-}
