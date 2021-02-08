@@ -1,0 +1,65 @@
+.header{
+    z-index: 100;
+    background-color: rgba(153, 153, 153, 0.3);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;     
+    top: 0;
+    transition: opacity .5s ease-out; 
+    h1 {
+        float: left;
+        margin-left: 3%;
+        .logo{
+            text-indent: 101%;
+            overflow: hidden;
+            white-space: nowrap;
+            // background-image: url(../img/logo_w.png);
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            width: 120px;
+            height: 24px;
+            display: block;
+        }
+    }
+    .menubar{
+        float: right;
+        li {
+            float: left;
+            width: 150px;
+            text-align: center;
+            a{
+                text-decoration: none;
+                color:#fff;
+                font-size: 1.3em;
+            }
+            a:hover{
+                color:#000;
+                cursor: pointer;
+            }
+            .menubar-list{
+                display: none;
+                li{
+                    margin-top: 15px;
+                    a{
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+    .showmenu{
+        display: none;
+        // background-image: url("../img/iconfinder_Menu_2190974.png");
+        background-repeat: no-repeat;
+        text-decoration: none;
+        width: 32px;
+        height: 32px;
+    }
+}
+
+ .clearfix{
+    clear: both;
+}
