@@ -64,22 +64,29 @@
         height: 500px;
         background-color: #f9e9cd;
         position: relative;
+        .img-bg{
+            background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+        }
         .heading{
             width: 50%;
-            position: absolute;
-            top: 60px;
-            left: 65px;
+            // position: absolute;
+            padding-top: 80px;
+            padding-left: 65px;
             font-size: 24px;
+            letter-spacing: 2px;
             display: flex;
+            color: #A46843;
+            z-index: 1;
+            position: absolute;
             .heading_num{
                 position: absolute;
-                top: 0;
-                left: 0;
+                // top: 0;
+                // left: 0;
             }
             .heading_title{
                 position: relative;
                 top: 0;
-                left: 65px;
+                left: 60px;
                 -webkit-transition: opacity 1s .65s;
                 transition: opacity 1s .65s;
             }
@@ -93,9 +100,57 @@
             width: 42vw;
             height: 1px;
             max-width: 535px;
-            background-color: #ccc;
+            background-color: #A46843;
             -webkit-transition: width .4s .3s;
             transition: width .4s .3s;
+        }
+        .content{
+            padding: 5%;
+            z-index: 1;
+            position: absolute;
+            top: 20%;
+            left: 11%;
+            .content_title{
+                font-size: 1.5em;
+                font-weight: bolder;
+                text-align: center;
+                margin-bottom: 3%;
+            }
+            .content_text{
+                display: flex;
+                justify-content: space-evenly;
+                .inner{
+                    text-align: center;
+                    .inner-img{
+                        padding: 20px;
+                        .fas{
+                            font-size: 50px;
+                        }
+                    }
+                    .inner-text{
+                        .inner-text-title{
+                            font-size: 1.5em;
+                            border-bottom: 1px solid #A46843;
+                            padding-bottom: 15px;
+                        }
+                        .inner-text-content{
+                            padding: 20px 15%;
+                        }
+                    }
+                }
+            }
+        }
+        .img-bg{
+            position: absolute;
+            top: 35px;
+            left: 50px;
+            z-index: 0;
+            background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+            width: 45%;
+            height: 435px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
     }
 }
