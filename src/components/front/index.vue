@@ -10,6 +10,21 @@
                 <li><a href="#">商品管理</a></li>
             </ul>
         </div>
+        <div class="container">
+            <div class="about">
+                <h2 class="heading">
+                    <div class="heading_num">01</div>
+                    <div class="heading_title">About</div>
+                </h2>
+
+            </div>
+            <div class="news">
+                
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
     </div>
 </template>
 
