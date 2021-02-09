@@ -16,7 +16,7 @@
                     <div class="heading_num">01</div>
                     <div class="heading_title">About</div>
                 </h2>
-                <div class="content">
+                <!-- <div class="content">
                     <p class="content_title">品質為本，顧客為先。</p>
                     <div class="content_text">
                         <div class="inner">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="img-bg"></div>
             </div>
             <div class="news">
