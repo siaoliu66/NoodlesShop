@@ -3,11 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import swiper, { Navigation, Pagination, Autoplay } from 'swiper'
 // import style (>= Swiper 6.x)
 import 'swiper/swiper-bundle.css'
-
+Vue.use(VueAxios, axios)
+axios.defaults.withCredentials = true;
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 swiper.use([Navigation, Pagination, Autoplay])
 
