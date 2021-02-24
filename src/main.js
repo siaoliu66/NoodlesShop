@@ -6,19 +6,26 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import "bootstrap"
+// Import component
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import swiper, { Navigation, Pagination, Autoplay } from 'swiper'
 // import style (>= Swiper 6.x)
 import 'swiper/swiper-bundle.css'
+import introswiper from './components/swiper.vue';
+
+import CurrenctFilter from './filters/currency'
+
 Vue.use(VueAxios, axios)
 axios.defaults.withCredentials = true;
+Vue.component('Loading',Loading)
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 swiper.use([Navigation, Pagination, Autoplay])
-
-import introswiper from './components/swiper.vue';
 Vue.component('intro-swiper', introswiper);
 Vue.config.productionTip = false
-
+Vue.filter('currenct',CurrenctFilter)
 
 /* eslint-disable no-new */
 new Vue({

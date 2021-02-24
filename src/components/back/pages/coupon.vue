@@ -2,7 +2,7 @@
   <div>
       <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-4">
-      <button class="btn btn-primary" @click="openModal(true)">建立新的產品</button>
+      <button class="btn btn-primary" @click="openModal()">建立新的產品</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -20,10 +20,10 @@
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
           <td class="text-left">
-            {{ item.origin_price | currenct}}
+            {{ item.origin_price}}
           </td>
           <td class="text-left">
-            {{ item.price | currenct}}
+            {{ item.price}}
           </td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
@@ -56,14 +56,14 @@
                         <div class="form-group">
                         <label for="image">輸入圖片網址</label>
                         <input type="text" class="form-control" id="image"
-                            placeholder="請輸入圖片連結" v-model="tempProduct.imageUrl" >
+                            placeholder="請輸入圖片連結" v-model="tempProduct.imageUrl">
                         </div>
                         <div class="form-group">
                         <label for="customFile">或 上傳圖片
-                            <i class="fas fa-spinner fa-spin" v-if="status.Fileuploading"></i>
+                            <i class="fas fa-spinner fa-spin"></i>
                         </label>
                         <input type="file" id="customFile" class="form-control"
-                            ref="files" @change="updatefile">
+                            ref="files">
                         </div>
                         <img :src="tempProduct.imageUrl"
                         class="img-fluid" alt="">
@@ -168,9 +168,6 @@ export default {
             tempProduct:{},
             isNew:false,
             isLoading:false,
-            status:{
-                Fileuploading:false
-            }
         }
     },
     methods: {
@@ -198,11 +195,9 @@ export default {
             const vm = this
             let api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/product`
             let httpmethod = 'post'
-            console.log('post')
             if(!vm.isNew){
                 api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/product/${vm.tempProduct.id}`
                 httpmethod = 'put'
-                console.log('put')
             }
             this.$http[httpmethod](api,{data:vm.tempProduct}).then((response) => {
                 console.log(response)
@@ -221,26 +216,6 @@ export default {
                 console.log(response)
                 $('#delProductModal').modal('hide')
                 this.getProducts();
-            })
-        },
-        updatefile() {
-            const updatedfile = this.$refs.files.files[0]
-            const vm = this
-            var formData = new FormData();
-            formData.append('file-to-upload', updatedfile);
-            const api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/upload`
-            vm.status.Fileuploading = true
-            this.$http.post(api,formData,{
-                headers:{
-                    'Content-Type':'multipart/form-data'
-                }
-            })
-            .then((response) => {
-                console.log(response)
-                if(response.data.success){
-                    vm.$set(vm.tempProduct,'imageUrl',response.data.imageUrl) 
-                    vm.status.Fileuploading = false
-                }
             })
         }
     },
