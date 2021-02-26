@@ -17,6 +17,7 @@ import 'swiper/swiper-bundle.css'
 import introswiper from './components/swiper.vue';
 
 import CurrenctFilter from './filters/currency'
+import './bus'
 
 Vue.use(VueAxios, axios)
 axios.defaults.withCredentials = true;

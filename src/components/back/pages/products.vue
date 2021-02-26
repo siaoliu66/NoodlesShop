@@ -36,7 +36,7 @@
         </tr>
       </tbody>
     </table>
-
+    <pagination :pages="pagination" @emit-page="getProducts" />
     <!-- add Modal -->
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,8 +160,12 @@
 
 <script>
 import $ from "jquery";
+import pagination from '@/components/pagination'
 
 export default {
+    components:{
+        pagination
+    },
     data() {
         return {
             products:[],
@@ -170,18 +174,20 @@ export default {
             isLoading:false,
             status:{
                 Fileuploading:false
-            }
+            },
+            pagination:{}
         }
     },
     methods: {
-        getProducts() {
+        getProducts(page = 1) {
             const vm = this
-            const api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/products/all`
+            const api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/products?page=${page}`
             vm.isLoading = true
             this.$http.get(api).then((response) => {
-                console.log(response)
+                console.log(response.data)
                 vm.isLoading = false
                 vm.products = response.data.products
+                vm.pagination = response.data.pagination
             })
         },
         openModal(isNew,item) {
@@ -240,6 +246,8 @@ export default {
                 if(response.data.success){
                     vm.$set(vm.tempProduct,'imageUrl',response.data.imageUrl) 
                     vm.status.Fileuploading = false
+                }else{
+                    this.$bus.$emit('message:push',response.data.message,'danger');
                 }
             })
         }
