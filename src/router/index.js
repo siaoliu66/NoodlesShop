@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/front/index'
+import Menu from '@/components/front/menu'
 import Login from '@/components/front/login'
 import dashboard from '@/components/back/dashboard'
 import Product from '@/components/back/pages/products'
@@ -21,6 +22,11 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: Index,
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: Menu,
     },
     {
       path: '/login',

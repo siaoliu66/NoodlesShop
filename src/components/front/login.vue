@@ -27,9 +27,12 @@ export default {
                 const token = response.data.token
                 const expired = response.data.expired
                 document.cookie = `token=${token};expires=${new Date(expired)};`;
-                console.log(response.data)
                 if(response.data.success){
                     this.$router.push("/admin/products")
+                }else{
+                    alert(response.data.message)
+                    document.querySelector('#inputEmail').value='';
+                    document.querySelector('#inputPassword').value=''
                 }
             })
         }
