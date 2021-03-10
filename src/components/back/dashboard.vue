@@ -21,7 +21,7 @@ components:{
     navbar,sidebar,alert
 },
 created() {
-    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1');
     this.$http.defaults.headers.common.Authorization = `${token}`;
   },
 }

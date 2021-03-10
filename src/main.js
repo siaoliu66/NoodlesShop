@@ -16,8 +16,38 @@ import swiper, { Navigation, Pagination, Autoplay } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import introswiper from './components/swiper.vue';
 
-import CurrenctFilter from './filters/currency'
+import currencyFilter from './filters/currency'
 import './bus'
+
+
+import { ValidationObserver, ValidationProvider, extend, localize, configure } from 'vee-validate';
+import TW from 'vee-validate/dist/locale/zh_TW.json'
+import * as rules from 'vee-validate/dist/rules';
+
+
+//驗證
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule]);
+});
+localize('zh_TW', TW);
+
+Vue.component('ValidationObserver', ValidationObserver)
+Vue.component('ValidationProvider', ValidationProvider)
+configure({
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  }
+});
+//自訂規則 
+extend('cellphone', value => {
+  var regex = /^09\d{8}$/
+  if (regex.test(value)) {
+    return true;
+  }
+  return  '手機格式不正確!!'
+});
+
 
 Vue.use(VueAxios, axios)
 axios.defaults.withCredentials = true;
@@ -26,7 +56,7 @@ Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 swiper.use([Navigation, Pagination, Autoplay])
 Vue.component('intro-swiper', introswiper);
 Vue.config.productionTip = false
-Vue.filter('currenct',CurrenctFilter)
+Vue.filter('currency',currencyFilter)
 
 /* eslint-disable no-new */
 new Vue({

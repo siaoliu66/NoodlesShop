@@ -17,6 +17,7 @@
     "popper.js": "^1.16.1",
     "sass-loader": "^7.1.0",
     "swiper": "^6.4.11",
+    "vee-validate": "^3.4.5",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.4",

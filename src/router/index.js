@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Index from '@/components/front/index'
 import Menu from '@/components/front/menu'
 import Login from '@/components/front/login'
+import Cart from '@/components/front/cart'
+import Checkout from '@/components/front/checkout_order'
 import dashboard from '@/components/back/dashboard'
 import Product from '@/components/back/pages/products'
 import Orders from '@/components/back/pages/orders'
@@ -27,6 +29,16 @@ export default new Router({
       path: '/menu',
       name: 'menu',
       component: Menu,
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
+    },
+    {
+      path: '/checkout/:order_id',
+      name: 'Checkout',
+      component: Checkout,
     },
     {
       path: '/login',

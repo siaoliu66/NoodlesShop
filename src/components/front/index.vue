@@ -3,28 +3,7 @@
         <intro-swiper></intro-swiper>
         <div class="header">
             <h1><a href="#" class="logo">牛老大</a></h1>
-            <ul class="menubar">
-                <li>
-                    <router-link class="nav-link" to="/login">
-                            關於牛老大
-                    </router-link>
-                </li>
-                <li>                   
-                    <router-link class="nav-link" to="/login">
-                            最新消息
-                    </router-link>
-                </li>
-                <li>                   
-                    <router-link class="nav-link" to="/menu">
-                            美味菜單
-                    </router-link>
-                </li>
-                <li>
-                    <router-link class="nav-link" to="/login">
-                            商品管理
-                    </router-link>
-                </li>
-            </ul>
+            <menubar/>
         </div>
         <div class="container">
             <div class="about">
@@ -85,8 +64,10 @@
 </template>
 
 <script>
-
+import menubar from './topmenu'
 export default {
-  
+  components:{
+      menubar
+  }
 }
 </script>

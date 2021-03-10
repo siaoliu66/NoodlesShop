@@ -23,7 +23,7 @@
                             </li>
                         </ul>
                     </td>
-                    <td>{{ item.total | currenct}}</td>
+                    <td>{{ item.total | currency}}</td>
                     <td v-if="item.is_paid" class="text-success">已付款</td>
                     <td v-else class="text-danger">尚未付款</td>
                     <td>
@@ -58,13 +58,13 @@
                             <tr v-for="item in tempProduct.products" :key="item.id">
                                 <td class="align-middle">{{ item.product.title }}</td>
                                 <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-                                <td class="align-middle text-right">{{ item.final_total | currenct}}</td>
+                                <td class="align-middle text-right">{{ item.final_total | currency}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2" class="text-right">總計</td>
-                                <td class="text-right">{{ tempProduct.total | currenct}}</td>
+                                <td class="text-right">{{ tempProduct.total | currency}}</td>
                             </tr>
                         </tfoot>
                     </table>

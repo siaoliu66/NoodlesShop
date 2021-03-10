@@ -36,8 +36,11 @@
                 font-size: 1.3em;
             }
             a:hover{
-                color:#000;
+                color:#f26b1f;
                 cursor: pointer;
+                font-weight: bolder;
+                text-shadow: 0 0 0.2em #000;
+                font-size:1.5em
             }
             .menubar-list{
                 display: none;
@@ -50,14 +53,6 @@
             }
         }
     }
-    // .showmenu{
-    //     display: none;
-    //     background-image: url("../img/iconfinder_Menu_2190974.png");
-    //     background-repeat: no-repeat;
-    //     text-decoration: none;
-    //     width: 32px;
-    //     height: 32px;
-    // }
 }
 .container{
     .about{
@@ -69,7 +64,6 @@
         }
         .heading{
             width: 50%;
-            // position: absolute;
             padding-top: 80px;
             padding-left: 65px;
             font-size: 24px;
@@ -104,42 +98,6 @@
             -webkit-transition: width .4s .3s;
             transition: width .4s .3s;
         }
-        // .content{
-        //     padding: 5%;
-        //     z-index: 1;
-        //     position: absolute;
-        //     top: 20%;
-        //     left: 11%;
-        //     .content_title{
-        //         font-size: 1.5em;
-        //         font-weight: bolder;
-        //         text-align: center;
-        //         margin-bottom: 3%;
-        //     }
-        //     .content_text{
-        //         display: flex;
-        //         justify-content: space-evenly;
-        //         .inner{
-        //             text-align: center;
-        //             .inner-img{
-        //                 padding: 20px;
-        //                 .fas{
-        //                     font-size: 50px;
-        //                 }
-        //             }
-        //             .inner-text{
-        //                 .inner-text-title{
-        //                     font-size: 1.5em;
-        //                     border-bottom: 1px solid #A46843;
-        //                     padding-bottom: 15px;
-        //                 }
-        //                 .inner-text-content{
-        //                     padding: 20px 15%;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
         .img-bg{
             position: absolute;
             top: 10%;

@@ -131,10 +131,10 @@ export default {
         getConpon(page = 1) {
             const api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/coupons?page=${page}`
             const vm = this
-            vm.isLoading = true
             this.$http.get(api).then((response) => {
                 console.log(response)
-                vm.conpons = response.data.coupons
+                this.conpons = response.data.coupons
+
                 vm.conpons.forEach((item) => {
                 const dates = new Date(item.due_date * 1000);
                 const year = dates.getFullYear();
@@ -142,9 +142,7 @@ export default {
                 const date = dates.getDate();
                 item.due_date = `${year}/${month}/${date}`
                 }) //讓Unix Timestamp轉回一般日期格式顯示
-                vm.isLoading = false
             })
-            
         },
         updateConpon() {
             // this.times = Math.floor(Date.now())
