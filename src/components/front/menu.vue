@@ -1,7 +1,8 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
-        <div class="header">
+        <div class="web">
+            <div class="header">
             <h1><a href="#" class="logo">牛老大</a></h1>
             <menubar/>
         </div>
@@ -17,25 +18,25 @@
                     <div class="col-md-3 col-lg-2 ">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">全部</a>
+                                <a class="nav-link" href="#" @click="category='all'"  :class="{'active':category=='all'}">全部</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">麵類</a>
+                                <a class="nav-link" href="#" @click="category='noodles'"  :class="{'active':category=='noodles'}">麵類</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">湯類</a>
+                                <a class="nav-link" href="#" @click="category='soup'"  :class="{'active':category=='soup'}">湯類</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">水餃類</a>
+                                <a class="nav-link" href="#" @click="category='dumplings'"  :class="{'active':category=='dumplings'}">水餃類</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">滷味小菜</a>
+                                <a class="nav-link" href="#" @click="category='vagetable'"  :class="{'active':category=='vagetable'}">滷味小菜</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                         <div class="row mt-4">
-                            <div class="col-md-4 mb-4" v-for="item in products" :key="item.id">
+                            <div class="col-md-4 mb-4" v-for="item in filterProducts" :key="item.id">
                                 <div class="card border-0 shadow-sm">
                                     <div style="height: 150px; background-size: cover; background-position: center;"
                                     :style="{backgroundImage: `url(${item.imageUrl})`}">
@@ -69,6 +70,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        
         <!-- productModal start -->
         <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -98,7 +101,7 @@
             </div>
             <div class="modal-footer">
                 <div class="text-muted text-nowrap mr-3">
-                    小計 <strong>{{ product.num * product.price }}</strong> 元
+                    <!-- 小計 <strong>{{ product.num * product.price }}</strong> 元 -->
                 </div>
                 <button type="button" class="btn btn-primary" @click.prevent="addTocart(product.id, product.num)">
                     <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
@@ -112,10 +115,23 @@
     </div>
 </template>
 
-  <style lang="scss" scope>
+  <style lang="scss" scoped>
+    .web{
+        background-color: #c4cbcf;
+        min-height: 100vh!important;
+    }
     .menu_container{
         margin-top: 64px;
-        background-color: #c4cbcf;
+    }
+    .nav{
+        margin-top: 30px;
+    }
+    .nav-item{
+        font-size: 1.3em;
+    }
+    .nav-item .active{
+        color: #fff;
+        background-color: #007bff;
     }
     .cart{
         border-radius: 50%;
@@ -164,6 +180,7 @@ export default {
             },
             cart:{},
             conpon_code:'',
+            category:'all'
         }
     },
     methods: {
@@ -248,6 +265,45 @@ export default {
     created() {
         this.getproducts()
         this.getcartproduct()
+    },
+    computed:{
+        filterProducts:function(){
+            if(this.category == 'all'){
+                return this.products
+            }else if(this.category == 'noodles'){
+                var newsproducts=[]
+                this.products.forEach(function(item){
+                    if(item.category=='麵類'){
+                        newsproducts.push(item)
+                    }
+                })
+                return newsproducts
+            }else if(this.category == 'soup'){
+                var newsproducts=[]
+                this.products.forEach(function(item){
+                    if(item.category=='湯類'){
+                        newsproducts.push(item)
+                    }
+                })
+                return newsproducts
+            }else if(this.category == 'dumplings'){
+                var newsproducts=[]
+                this.products.forEach(function(item){
+                    if(item.category=='水餃類'){
+                        newsproducts.push(item)
+                    }
+                })
+                return newsproducts
+            }else{
+                var newsproducts=[]
+                this.products.forEach(function(item){
+                    if(item.category=='滷味小菜類'){
+                        newsproducts.push(item)
+                    }
+                })
+                return newsproducts
+            }
+        }
     }
 }
 </script>

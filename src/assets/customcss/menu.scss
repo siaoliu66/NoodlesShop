@@ -1,9 +1,15 @@
+body{
+    font-family: 'Balsamiq Sans','微軟正黑體',  cursive;
+}
+.app{
+    background-color: #c4cbcf;
+    height: 100vh;
+}
 .header{
     z-index: 100;
-    background-color: rgba(153, 153, 153, 0.3);
+    background-color: rgba(153, 153, 153, 0.8);
     padding-top: 15px;
     padding-bottom: 15px;
-    // max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     position: fixed;     
@@ -16,7 +22,6 @@
             text-indent: 101%;
             overflow: hidden;
             white-space: nowrap;
-            // background-image: url(../img/logo_w.png);
             background-repeat: no-repeat;
             background-attachment: scroll;
             width: 120px;
@@ -36,7 +41,7 @@
                 font-size: 1.3em;
             }
             a:hover{
-                color:#f26b1f;
+                color:#f2ce2b;
                 cursor: pointer;
                 font-weight: bolder;
                 text-shadow: 0 0 0.2em #000;
@@ -66,7 +71,7 @@
             width: 50%;
             padding-top: 80px;
             padding-left: 65px;
-            font-size: 24px;
+            font-size: 30px;
             letter-spacing: 2px;
             display: flex;
             color: #A46843;
@@ -88,8 +93,8 @@
         .heading::before{
             content: "";
             position: relative;
-            top: 13px;
-            left: 35px;
+            top: 16px;
+            left: 41px;
             display: block;
             width: 42vw;
             height: 1px;
@@ -101,15 +106,185 @@
         .img-bg{
             position: absolute;
             top: 10%;
-            left: 50px;
+            left: 37px;
             z-index: 0;
             background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
-            width: 45%;
-            height: 500px;
+            width: 40%;
+            height: 85%;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
         }
+        .content{
+            width: 45%;
+            position: absolute;
+            top:36%;
+            right: 5%;
+            font-size: 1.2em;
+            line-height: 2;
+        }
+    }
+    .recommend{
+        height: 500px;
+        background-color: #f9e9cd;
+        position: relative;
+        .heading{
+            width: 50%;
+            padding-top: 45px;
+            padding-left: 65px;
+            font-size: 30px;
+            letter-spacing: 2px;
+            display: flex;
+            color: #A46843;
+            z-index: 1;
+            position: absolute;
+            .heading_num{
+                position: absolute;
+                // top: 0;
+                // left: 0;
+            }
+            .heading_title{
+                position: relative;
+                top: 0;
+                left: 60px;
+                -webkit-transition: opacity 1s .65s;
+                transition: opacity 1s .65s;
+            }
+        }
+        .heading::before{
+            content: "";
+            position: relative;
+            top: 16px;
+            left: 41px;
+            display: block;
+            width: 42vw;
+            height: 1px;
+            max-width: 535px;
+            background-color: #A46843;
+            -webkit-transition: width .4s .3s;
+            transition: width .4s .3s;
+        }
+        .right{
+            position: absolute;
+            right: 100px;
+        }
+        .content{
+            position: absolute;
+            top:26%;
+            right: 5%;
+            width: 90%;
+        }
+    }
+    .news{
+        height: 500px;
+        background-color: #f9e9cd;
+        position: relative;
+        .heading{
+            width: 50%;
+            padding-top: 45px;
+            padding-left: 65px;
+            font-size: 30px;
+            letter-spacing: 2px;
+            display: flex;
+            color: #A46843;
+            z-index: 1;
+            position: absolute;
+            .heading_num{
+                position: absolute;
+                // top: 0;
+                // left: 0;
+            }
+            .heading_title{
+                position: relative;
+                top: 0;
+                left: 60px;
+                -webkit-transition: opacity 1s .65s;
+                transition: opacity 1s .65s;
+            }
+        }
+        .heading::before{
+            content: "";
+            position: relative;
+            top: 16px;
+            left: 41px;
+            display: block;
+            width: 42vw;
+            height: 1px;
+            max-width: 535px;
+            background-color: #A46843;
+            -webkit-transition: width .4s .3s;
+            transition: width .4s .3s;
+        }
+        .newscontent{
+            width: 80%;
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            background-color: #fff;
+            padding: 2%;
+            border-radius: 10px;
+            .newslist{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #74787a;
+                .title{
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    .contact{
+        height: 500px;
+        background-color: #f9e9cd;
+        position: relative;
+        .heading{
+            width: 50%;
+            padding-top: 45px;
+            padding-left: 65px;
+            font-size: 30px;
+            letter-spacing: 2px;
+            display: flex;
+            color: #A46843;
+            z-index: 1;
+            position: absolute;
+            .heading_num{
+                position: absolute;
+                // top: 0;
+                // left: 0;
+            }
+            .heading_title{
+                position: relative;
+                top: 0;
+                left: 60px;
+                -webkit-transition: opacity 1s .65s;
+                transition: opacity 1s .65s;
+            }
+        }
+        .heading::before{
+            content: "";
+            position: relative;
+            top: 16px;
+            left: 41px;
+            display: block;
+            width: 42vw;
+            height: 1px;
+            max-width: 535px;
+            background-color: #A46843;
+            -webkit-transition: width .4s .3s;
+            transition: width .4s .3s;
+        }
+        .right{
+            position: absolute;
+            right: 100px;
+        }
     }
 }
-
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }

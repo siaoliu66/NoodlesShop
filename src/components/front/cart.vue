@@ -7,7 +7,7 @@
             <menubar/>
         </div>
         <div class="cart_container">
-            <div class="row justify-content-center container" >
+            <div class="row container" >
                 <div class="cart">
                     <div class="col-md-3">
                         <div class="card">
@@ -125,7 +125,7 @@
         </div>
     </div>
 </template>
-<style lang="scss" scope>
+<style lang="scss" scoped>
     .cart_container{
         margin-top: 64px;
         // background-color: #c4cbcf;
@@ -167,9 +167,10 @@
         margin: 8px;
         padding: 10px;
     }
-    .card{
-        position: fixed;
-        width: 18%;
+    .fa-shopping-basket{
+        position: absolute;
+        top: 5%;
+        transform: translateX(50%);
     }
 </style>
 <script>

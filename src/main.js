@@ -16,6 +16,7 @@ import swiper, { Navigation, Pagination, Autoplay } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import introswiper from './components/swiper.vue';
 
+
 import currencyFilter from './filters/currency'
 import './bus'
 
@@ -47,6 +48,10 @@ extend('cellphone', value => {
   }
   return  '手機格式不正確!!'
 });
+
+
+import CurrenctFilter from './filters/currency'
+import './bus'
 
 
 Vue.use(VueAxios, axios)

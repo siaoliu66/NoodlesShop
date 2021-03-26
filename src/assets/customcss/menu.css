@@ -1,0 +1,133 @@
+.app {
+  background-color: #c4cbcf;
+  height: 100vh;
+}
+
+.header {
+  z-index: 100;
+  background-color: rgba(153, 153, 153, 0.3);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  -webkit-transition: opacity .5s ease-out;
+  transition: opacity .5s ease-out;
+}
+
+.header h1 {
+  float: left;
+  margin-left: 3%;
+}
+
+.header h1 .logo {
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  width: 120px;
+  height: 24px;
+  display: block;
+}
+
+.header .menubar {
+  float: right;
+}
+
+.header .menubar li {
+  float: left;
+  width: 150px;
+  text-align: center;
+}
+
+.header .menubar li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.header .menubar li a:hover {
+  color: #f26b1f;
+  cursor: pointer;
+  font-weight: bolder;
+  text-shadow: 0 0 0.2em #000;
+  font-size: 1.5em;
+}
+
+.header .menubar li .menubar-list {
+  display: none;
+}
+
+.header .menubar li .menubar-list li {
+  margin-top: 15px;
+}
+
+.header .menubar li .menubar-list li a {
+  font-size: 1em;
+}
+
+.container .about {
+  height: 500px;
+  background-color: #f9e9cd;
+  position: relative;
+}
+
+.container .about .img-bg {
+  background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+}
+
+.container .about .heading {
+  width: 50%;
+  padding-top: 80px;
+  padding-left: 65px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #A46843;
+  z-index: 1;
+  position: absolute;
+}
+
+.container .about .heading .heading_num {
+  position: absolute;
+}
+
+.container .about .heading .heading_title {
+  position: relative;
+  top: 0;
+  left: 60px;
+  -webkit-transition: opacity 1s .65s;
+  transition: opacity 1s .65s;
+}
+
+.container .about .heading::before {
+  content: "";
+  position: relative;
+  top: 13px;
+  left: 35px;
+  display: block;
+  width: 42vw;
+  height: 1px;
+  max-width: 535px;
+  background-color: #A46843;
+  -webkit-transition: width .4s .3s;
+  transition: width .4s .3s;
+}
+
+.container .about .img-bg {
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  z-index: 0;
+  background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+  width: 45%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/*# sourceMappingURL=menu.css.map */

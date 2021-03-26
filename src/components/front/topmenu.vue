@@ -17,7 +17,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link class="nav-link" to="/login">
+                    <router-link class="nav-link" to="/login" target='_blank'>
                             商品管理
                     </router-link>
                 </li>

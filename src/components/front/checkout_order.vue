@@ -65,7 +65,7 @@
         
     </div>
 </template>
-<style lang="scss" scope>
+<style lang="scss" scoped>
     .container{
         margin-top: 64px;
     }
