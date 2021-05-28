@@ -59,9 +59,10 @@ body{
         }
     }
 }
+
 .container{
     .about{
-        height: 500px;
+        // height: 500px;
         background-color: #f9e9cd;
         position: relative;
         .img-bg{
@@ -125,7 +126,7 @@ body{
         }
     }
     .recommend{
-        height: 500px;
+        // height: 500px;
         background-color: #f9e9cd;
         position: relative;
         .heading{
@@ -170,13 +171,13 @@ body{
         }
         .content{
             position: absolute;
-            top:26%;
+            top: 20%;
             right: 5%;
             width: 90%;
         }
     }
     .news{
-        height: 500px;
+        // height: 500px;
         background-color: #f9e9cd;
         position: relative;
         .heading{
@@ -236,7 +237,7 @@ body{
         }
     }
     .contact{
-        height: 500px;
+        // height: 500px;
         background-color: #f9e9cd;
         position: relative;
         .heading{
@@ -281,10 +282,47 @@ body{
         }
     }
 }
-.clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+.container{
+    .about,.recommend,.news,.contact{
+        min-height: 500px
     }
+    .recommend,.news,.contact{
+        .heading{
+            padding-top: 25px;
+        }
+    }
+}
+.footer{
+    background-color: #A46843;
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: 10px;
+    .footer-menu{
+        overflow: hidden;
+        padding: 2%;
+        .footerbar {
+            width: 57%;
+            float: left;
+            padding-top: 12px;
+            li{
+                padding-bottom: 10px;
+                list-style-type: none;
+                a {
+                    text-decoration: none;
+                    color: #000;
+                }
+            }
+        }
+        .footer-link{
+            a {
+                float: right;
+                padding-left: 2%;
+            }
+        }
+    }
+    .copyright{
+        padding: 1%;
+        background-color: #ccc;
+    }
+}

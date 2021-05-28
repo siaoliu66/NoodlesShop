@@ -2,8 +2,14 @@
     <div class="signin">
         <form class="login" @submit.prevent="login()">
             <h1>會員登入</h1>
-            <input type="email" id="inputEmail" class="form-control" placeholder="請輸入帳號" required v-model="user.username" >
-            <input type="password" id="inputPassword" class="form-control" placeholder="請輸入帳號" required v-model="user.password">
+            <span class="login_input"> 
+                <span><i class="fas fa-sign-in-alt" style="font-size: 2em;opacity:0.3"></i></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="請輸入帳號" required v-model="user.username" >
+            </span>
+            <span class="login_input">
+                <span><i class="fas fa-key" style="font-size: 2em;opacity:0.3"></i></span>
+                <input type="password" id="inputPassword" class="form-control" placeholder="請輸入帳號" required v-model="user.password">
+            </span>
             <button class="btn-sign" type="submit">登入</button>
         </form>
     </div>

@@ -24,47 +24,6 @@
                 <div class="content">
                     <swiper2/>
                 </div>
-                <!-- <div class="content">
-                    <p class="content_title">品質為本，顧客為先。</p>
-                    <div class="content_text">
-                        <div class="inner">
-                            <div class="inner-img">
-                                <i class="fas fa-diagnoses"></i>
-                            </div>
-                            <div class="inner-text">
-                                <h4 class="inner-text-title">食材新鮮</h4>
-                                <p class="inner-text-content">採用天然食材,吃得健康大家安心。</p>
-                            </div>
-                        </div>
-                        <div class="inner">
-                            <div class="inner-img">
-                                    <i class="fas fa-seedling"></i>
-                            </div>
-                            <div class="inner-text">
-                                <h4 class="inner-text-title">天然醬料</h4>
-                                <p class="inner-text-content">選用天然醬料，才能吃的安全放心。</p>
-                            </div>
-                        </div>
-                        <div class="inner">
-                            <div class="inner-img">
-                                    <i class="fas fa-people-carry"></i>
-                            </div>
-                            <div class="inner-text">
-                                <h4 class="inner-text-title">古法智慧</h4>
-                                <p class="inner-text-content">每天早起熬煮，遵循古法手工。</p>
-                            </div>
-                        </div>
-                        <div class="inner">
-                            <div class="inner-img">
-                                    <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="inner-text">
-                                <h4 class="inner-text-title">用心製作</h4>
-                                <p class="inner-text-content">用心烹調，值得你的等待。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="clearfix"></div>
             <div class="news">
@@ -102,9 +61,29 @@
                     <div class="heading_num">04</div>
                     <div class="heading_title">contact</div>
                 </h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.9284202400704!2d120.39250181534818!3d22.506868641051348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3471e27f00000001%3A0x4c7b878e0c0a328a!2z54mb6ICB5aSn54mb6IKJ6bq1!5e0!3m2!1szh-TW!2stw!4v1621824013502!5m2!1szh-TW!2stw" width="100%" height="450" style="margin-top: 7%;margin-bottom: 5%;border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
+            <div class="clearfix"></div>
         </div>
         <div class="footer">
+            <div class="footer-menu">
+                <ul class="footerbar">
+                    <li>聯絡我們:07-6468855</li>
+                    <li>商家地址:832高雄市林園區忠孝西路13號</li>
+                </ul>
+                <div class="footer-link">
+                    <a href="https://www.facebook.com/Niulauda/" target="_blank" title="牛老大facebook">
+                        <img src="@/assets/img/iconfinder_facebook_386622.png" alt="">
+                    </a>
+                    <a href="javascript:;" target="_blank" title="牛老大line">
+                        <img src="@/assets/img/iconfinder_line_1807543.png" alt="">
+                    </a>
+                    <a href="https://goo.gl/maps/fZXiRce4kMBCzJ8C9" target="_blank" title="牛老大google-map">
+                        <img src="@/assets/img/iconfinder_google_4975305.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <p class="copyright">Copyright © 2021 牛老大版權所有.</p>
         </div>
     </div>
 </template>
