@@ -68,6 +68,7 @@
                                 <div class="circle">2</div>
                                 <div class="text">訂購人資訊</div>
                             </div>
+                            <ValidationObserver v-slot="{ invalid }">
                             <ValidationProvider rules="required" v-slot="{ failed,errors }">
                                 <div class="form-group">
                                     <label for="useremail" class="m-1">Email</label>
@@ -115,8 +116,9 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <button class="btn btn-danger" @click="createOrder()">送出訂單</button>
+                                    <button class="btn btn-danger" @click="createOrder()" :disabled="invalid">送出訂單</button>
                                 </div>
+                                </ValidationObserver>
                             </div>
                         </div>
                 </div>
