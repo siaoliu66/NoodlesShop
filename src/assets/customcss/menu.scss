@@ -19,14 +19,15 @@ body{
         float: left;
         margin-left: 3%;
         .logo{
-            text-indent: 101%;
+            // text-indent: 101%;
             overflow: hidden;
             white-space: nowrap;
-            background-repeat: no-repeat;
-            background-attachment: scroll;
             width: 120px;
-            height: 24px;
+            height: 34px;
             display: block;
+            img{
+                max-width: 100%;
+            }
         }
     }
     .menubar{

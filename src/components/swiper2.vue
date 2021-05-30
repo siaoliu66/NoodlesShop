@@ -3,10 +3,11 @@
     <swiper-slide  v-for="(slide, key) in swiperList" :key="key" >
         <div align="center" class="swiperimg" :style="'backgroundImage:url('+ slide.imgUrl +')'">
           <p class="name"> {{ slide.name }}</p>
-            <!-- <img :src="slide" alt=""> -->
         </div>
     </swiper-slide>
+    <div class="swiper-pagination2" slot="pagination"></div>
   </swiper>
+  
 </template>
 <style lang="scss" scope>
     .swiperimg{
@@ -17,12 +18,17 @@
         height: 350px;
     }
     .name{
-      padding-top: 126%;
-      font-size: 1.2em;
-      color: white;
+      padding-top: 125%;
+      font-size: 1.3em;
+      color: #000;
       letter-spacing: 3px;
       font-weight: bolder;
-      text-shadow: 0px 2px 2px #343434;
+      text-shadow: 2px 2px 2px #fbda41;
+    }
+    .swiper-pagination2{
+      text-align: center;
+      position: absolute;
+      z-index: 100;
     }
 </style>
 <script>
@@ -49,9 +55,11 @@
           slidesPerView: 4,
           loop : true,
           pagination: {
-            el: '.swiper-pagination',
+            el: '.swiper-pagination2',
+            type: 'bullets',
             clickable: true
-          }
+          },
+          loop : true,
         }
       }
     }
