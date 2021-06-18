@@ -48,6 +48,13 @@ extend('cellphone', value => {
   }
   return  '手機格式不正確!!'
 });
+extend('date', value => {
+  var regex = /^\d{4}\/(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])$/
+  if (regex.test(value)) {
+    return true;
+  }
+  return  '日期格式不正確!!'
+});
 
 
 import CurrenctFilter from './filters/currency'
@@ -77,6 +84,8 @@ router.beforeEach((to, from, next) => {
     axios.post(api).then((response) => {
         console.log(response.data)
         if(response.data.success){
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
           next()
         }else{
           next({path:'/login'});

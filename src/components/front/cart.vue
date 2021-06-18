@@ -3,7 +3,6 @@
         <loading :active.sync="isLoading"></loading>
         <alert></alert>
         <div class="header">
-            <h1><a href="#" class="logo">牛老大</a></h1>
             <menubar/>
         </div>
         <div class="cart_container">
@@ -61,7 +60,8 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                                
+                            </table>                            
                         </div>
                         <div class="cart-group">
                             <div class="title d-flex align-items-center">
@@ -85,7 +85,7 @@
                                     <span class="text-danger" v-if="failed">{{ errors[0] }}</span>
                                 </div>
                             </ValidationProvider> 
-                            <ValidationProvider rules="cellphone" v-slot="{failed,errors}">
+                            <ValidationProvider rules="required|cellphone" v-slot="{failed,errors}">
                                 <div class="form-group">
                                     <label for="cellphone" class="m-1">收件人電話</label>
                                     <input type="tel" class="form-control" id="usertel" v-model="form.user.tel" placeholder="請輸入電話">
@@ -116,6 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
+                                    <router-link class="btn btn-primary" to="/menu"> 繼續點餐 </router-link>
                                     <button class="btn btn-danger" @click="createOrder()" :disabled="invalid">送出訂單</button>
                                 </div>
                                 </ValidationObserver>

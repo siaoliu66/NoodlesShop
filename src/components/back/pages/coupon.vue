@@ -20,7 +20,7 @@
                     <td>{{ item.title }}</td>
                     <td>{{ item.code }}</td>
                     <td>{{ item.percent }}</td>
-                    <td>{{ item.due_date }}</td>
+                    <td :class="{'text-danger':showText(`${ item.due_date }`)}">{{ item.due_date }}</td>
                     <td>
                         <span v-if="item.is_enabled" class="text-success">啟用</span>
                         <span v-else>未啟用</span>
@@ -64,10 +64,13 @@
                     <input type="number" class="form-control" id="percent"
                         placeholder="請輸入折扣" v-model="tempProduct.percent">
                     </div>
+                    <ValidationProvider rules="date" v-slot="{failed,errors}">
                     <div class="form-group">
                     <label for="due_date">到期日</label>
                      <input type="text" class="form-control" id="due_date" placeholder="請輸入到期日，格式為 西元-月-日" v-model="tempProduct.due_date">
+                     <span class="text-danger" v-if="failed">{{ errors[0] }}</span>
                     </div>
+                    </ValidationProvider>
                     <div class="form-group">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox"
@@ -187,6 +190,20 @@ export default {
                 }
             })
         },
+        showText (timeString) {
+            let date = new Date(timeString)
+            let today = new Date()
+            today.setHours(0)
+            today.setMinutes(0)
+            today.setSeconds(0)
+            // today 为今天凌晨的时间
+            let delta = today - date // 得到相差的时间 ms
+            if (delta > 1) {
+                return true
+            }else{
+                return false
+            }
+        }
     },
     created() {
         this.getConpon()

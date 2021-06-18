@@ -37,6 +37,7 @@
       </tbody>
     </table>
     <pagination :pages="pagination" @emit-page="getProducts" />
+    
     <!-- add Modal -->
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">

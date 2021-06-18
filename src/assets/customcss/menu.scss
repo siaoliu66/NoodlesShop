@@ -63,8 +63,6 @@ body{
 
 .container{
     .about{
-        // height: 500px;
-        background-color: #f9e9cd;
         position: relative;
         .img-bg{
             background-image: url(https://images.unsplash.com/photo-1607567087368-5bc5715c223d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
@@ -81,8 +79,6 @@ body{
             position: absolute;
             .heading_num{
                 position: absolute;
-                // top: 0;
-                // left: 0;
             }
             .heading_title{
                 position: relative;
@@ -127,8 +123,6 @@ body{
         }
     }
     .recommend{
-        // height: 500px;
-        background-color: #f9e9cd;
         position: relative;
         .heading{
             width: 50%;
@@ -178,8 +172,6 @@ body{
         }
     }
     .news{
-        // height: 500px;
-        background-color: #f9e9cd;
         position: relative;
         .heading{
             width: 50%;
@@ -238,8 +230,6 @@ body{
         }
     }
     .contact{
-        // height: 500px;
-        background-color: #f9e9cd;
         position: relative;
         .heading{
             width: 50%;
@@ -294,36 +284,55 @@ body{
     }
 }
 .footer{
-    background-color: #A46843;
-    max-width: 1280px;
-    margin: 0 auto;
+    background-color: #333437;
     overflow: hidden;
     padding-top: 10px;
     .footer-menu{
         overflow: hidden;
         padding: 2%;
+        max-width: 1280px;
+        margin: 0 auto;
+        color: #c4cbcf;
+        text-align: center;
+        .downTitle {
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 1.5px;
+            line-height: 25px;
+        }
         .footerbar {
-            width: 57%;
-            float: left;
-            padding-top: 12px;
-            li{
-                padding-bottom: 10px;
-                list-style-type: none;
-                a {
-                    text-decoration: none;
-                    color: #000;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            li {
+                .title {
+                    color: #666769;
+                    margin-right: 10px;
+                }
+                &::after{
+                    content: '|';
+                    margin: 0 10px;
+                };
+            }
+            :last-child {
+                &::after{
+                    display: none;
                 }
             }
+            
         }
         .footer-link{
-            a {
-                float: right;
-                padding-left: 2%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            img{
+                width: 60%;
             }
         }
-    }
-    .copyright{
-        padding: 1%;
-        background-color: #ccc;
-    }
+        .copyright{
+            color: #666769;
+        }
+        
+        }
+
 }

@@ -398,7 +398,6 @@ export default {
       }
     },
     totalQty: function () {
-      let vm = this;
       var totalNum = 0;
       if (this.cart.carts) {
         this.cart.carts.forEach(function (item) {
