@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="header">
-            <h1><a href="#" class="logo">牛老大</a></h1>
             <menubar/>
         </div>
         <div class="container">

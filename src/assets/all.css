@@ -1,4 +1,59 @@
 @charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*CSS RESET END*/
 body {
   font-family: 'Balsamiq Sans','微軟正黑體',  cursive;
 }
@@ -367,4 +422,181 @@ body {
   padding: 1%;
   background-color: #ccc;
 }
-/*# sourceMappingURL=menu.css.map */
+
+.signin {
+  height: 100vh;
+  background: -webkit-gradient(linear, left bottom, right top, from(#d16ba5), color-stop(#c777b9), color-stop(#ba83ca), color-stop(#aa8fd8), color-stop(#9a9ae1), color-stop(#52cffe), to(#41dfff));
+  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #52cffe, #41dfff);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.signin .login {
+  margin: auto;
+  width: 100%;
+  max-width: 350px;
+}
+
+.signin .login h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 8%;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.signin .login .login_input {
+  display: block;
+}
+
+.signin .login .login_input span {
+  position: absolute;
+  padding: 6px 8px;
+}
+
+.signin .login .login_input .form-control {
+  margin: 16px 0;
+  font-size: 18px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding-left: 45px;
+}
+
+.signin .login .btn-sign {
+  width: 75%;
+  height: 35px;
+  text-align: center;
+  font-size: 16px;
+  background-color: rgba(123, 123, 123, 0.75);
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  -webkit-box-shadow: 10px 10px 14px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 10px 10px 14px 1px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin: 25px auto;
+  display: block;
+  color: #fff;
+}
+
+.signin .login .btn-sign:hover {
+  background-color: #86A8E7;
+}
+
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100;
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
+  -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+          box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+          box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar {
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+          box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/*main*/
+main {
+  margin-top: 40px;
+}
+/*# sourceMappingURL=all.css.map */
