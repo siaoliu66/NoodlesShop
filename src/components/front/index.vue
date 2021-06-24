@@ -100,17 +100,35 @@
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content border-0">
+<<<<<<< HEAD
                 <div class="modal-header border-0">
+=======
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                    <span>牛老大餐飲</span>
+                    </h5>
+>>>>>>> cd826369745da576f806be4f6ac49b40e2d72d79
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <div class="body-title">Covid-19 期間折扣</div> 
                     <!-- 折扣碼區塊 -->
                     <div class="coupon">
                         <div class="coupon-title text-center">91% OFF</div>
                         <div class="coupon-text text-center">covid19</div>
+=======
+                    <div class="body d-flex align-items-center flex-column">
+                        <div class="body-title">Covid-19期間折扣</div>
+                        <div class="body-des">輸入優惠碼即可享有</div>
+                        
+                        <div class="discount text-center">
+                            <p>91% OFF</p>
+                        </div>
+                        <div class="coupon text-center">covid19</div>
+>>>>>>> cd826369745da576f806be4f6ac49b40e2d72d79
                     </div>
                 </div>
                 </div>
@@ -150,6 +168,7 @@
         }
     }
     .modal{
+<<<<<<< HEAD
         .modal-content{
             background-image: url(https://images.unsplash.com/photo-1608539660949-16799e893a95?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1005&q=80);
             background-position: center;
@@ -183,6 +202,33 @@
                 }
                 .coupon-title{
                     margin: 5px 0;
+=======
+        .modal-body{
+            .body{
+                background-color: rgba(255, 187, 105, 0.3);
+                .body-title{
+                    font-size: 2rem;
+                    margin: 30px;
+                }
+                .body-des{
+                    margin-bottom: 10px;
+                }
+                .coupon{
+                    background-color: #705039;
+                    width: 100px;
+                    padding: 3px;
+                    color: white;
+                    margin: 3%;
+                    font-size: 20px;
+                }
+                .discount{
+                    font-size: 2.5rem;
+                    background-color: white;
+                    width: 250px;
+                    padding: 2%;
+                    margin: 10px;
+                    border: 6px solid #705039;
+>>>>>>> cd826369745da576f806be4f6ac49b40e2d72d79
                 }
             }
         }
