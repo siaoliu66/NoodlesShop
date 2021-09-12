@@ -6,6 +6,8 @@ import Menu from '@/components/front/menu'
 import Login from '@/components/front/login'
 import Cart from '@/components/front/cart'
 import Checkout from '@/components/front/checkout_order'
+import News from '@/components/front/news'
+import About from '@/components/front/aboutUs'
 import dashboard from '@/components/back/dashboard'
 import Product from '@/components/back/pages/products'
 import Orders from '@/components/back/pages/orders'
@@ -34,6 +36,16 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart,
+    },
+    {
+      path: '/news',
+      name: 'News',
+      component: News,
+    },
+    {
+      path: '/aboutUs',
+      name: 'About',
+      component: About,
     },
     {
       path: '/checkout/:order_id',

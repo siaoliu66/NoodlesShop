@@ -60,6 +60,7 @@
             clickable: true
           },
           loop : true,
+          autoplay:true,
         }
       }
     }

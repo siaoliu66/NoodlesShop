@@ -62,6 +62,36 @@ body{
 }
 
 .container{
+    .coupon{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        margin-bottom: 25px;
+        background-image: url('~@/assets/img/banner.jpg');
+        .title{
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        h3{
+            font-size: 22px;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+        .text{
+            margin-bottom: 15px;
+        }
+        .code{
+            padding: 10px;
+            border: 1px dashed;
+            border-radius: 8px;
+            width: 150px;
+            text-align: center;
+        }
+    }
     .about{
         position: relative;
         .img-bg{
@@ -210,74 +240,40 @@ body{
             transition: width .4s .3s;
         }
         .newscontent{
-            width: 80%;
+            // width: 80%;
             position: absolute;
             top: 20%;
             left: 10%;
-            background-color: #fff;
-            padding: 2%;
-            border-radius: 10px;
-            .newslist{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 15px 0;
-                border-bottom: 1px solid #74787a;
-                .title{
-                    margin-right: 20px;
-                }
-            }
-        }
-    }
-    .contact{
-        position: relative;
-        .heading{
-            width: 50%;
-            padding-top: 45px;
-            padding-left: 65px;
-            font-size: 30px;
-            letter-spacing: 2px;
             display: flex;
-            color: #A46843;
-            z-index: 1;
-            position: absolute;
-            .heading_num{
-                position: absolute;
-                // top: 0;
-                // left: 0;
+            justify-content: center;
+            .newslist{
+                width: 30%;
+                height: 250px;
+                margin: 1%;
+                border: 1px solid;
+                border-radius: 5px;
+                .img{
+                    height: 70%;
+                    width: 100%;
+                    background-image: url('~@/assets/img/news.jpg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+                .title,.content{
+                    padding: 0 5px;
+                    margin-top: 10px;
+                }
+
             }
-            .heading_title{
-                position: relative;
-                top: 0;
-                left: 60px;
-                -webkit-transition: opacity 1s .65s;
-                transition: opacity 1s .65s;
-            }
-        }
-        .heading::before{
-            content: "";
-            position: relative;
-            top: 16px;
-            left: 41px;
-            display: block;
-            width: 42vw;
-            height: 1px;
-            max-width: 535px;
-            background-color: #A46843;
-            -webkit-transition: width .4s .3s;
-            transition: width .4s .3s;
-        }
-        .right{
-            position: absolute;
-            right: 100px;
         }
     }
 }
 .container{
-    .about,.recommend,.news,.contact{
-        min-height: 500px
+    .about,.recommend,.news{
+        min-height: 450px
     }
-    .recommend,.news,.contact{
+    .recommend,.news{
         .heading{
             padding-top: 25px;
         }
