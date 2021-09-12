@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1><a href="/index" class="logo">
-    <img :src="`./static/img/logo.jpg`"></a></h1>
+    <h1><router-link class="logo" to="/index"><img :src="`./static/img/logo.jpg`"></router-link>
+    </h1>
     <ul class="menubar">
       <li>
         <router-link class="nav-link" to="/aboutUs"> 關於牛老大 </router-link>
