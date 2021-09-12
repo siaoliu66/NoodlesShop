@@ -55,7 +55,7 @@
     </div>
   </div>
 </template>
-<style  src="@/assets/customcss/news.css"></style>
+<style scoped src="@/assets/customcss/news.css"></style>
 <script>
 import menubar from "./topmenu";
 import swiper2 from "../swiper2";

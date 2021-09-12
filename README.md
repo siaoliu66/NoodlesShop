@@ -1,6 +1,8 @@
 # vue-noodles
 
 > A Vue.js project
+> 
+> [前台頁面](https://siaoliu66.github.io/NoodlesShop/)
 
 ## Build Setup
 
