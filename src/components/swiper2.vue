@@ -1,5 +1,6 @@
 <template>
-  <swiper class="swiper" :options="swiperOption" >
+<div class="menubanner">
+    <swiper class="swiper" :options="swiperOption" >
     <swiper-slide  v-for="(slide, key) in swiperList" :key="key" >
         <div align="center" class="swiperimg" :style="'backgroundImage:url('+ slide.imgUrl +')'">
           <p class="name"> {{ slide.name }}</p>
@@ -7,7 +8,10 @@
     </swiper-slide>
     <div class="swiper-pagination2" slot="pagination"></div>
   </swiper>
-  
+   <router-link class="go btn btn-outline-dark mt-3" to="/menu">來去點餐</router-link>
+</div>
+
+
 </template>
 <style lang="scss" scope>
     .swiperimg{
@@ -15,10 +19,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        height: 350px;
+        height: 300px;
     }
     .name{
-      padding-top: 125%;
+      padding-top: 255px;
       font-size: 1.3em;
       color: #000;
       letter-spacing: 3px;
@@ -29,6 +33,33 @@
       text-align: center;
       position: absolute;
       z-index: 100;
+    }
+    .go{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #A46843;
+      border-color: #A46843;
+      &:hover{
+          color: #fff;
+          background-color: #A46843;
+
+      }
+    }
+    
+    @media (max-width: 992px){
+      .swiperimg{
+        height:270px;
+        .name{
+          padding-top: 230px;
+        }
+      }
+    }
+    
+    @media (max-width: 768px){
+      .swiperimg{
+        height:270px;
+      }
     }
 </style>
 <script>
@@ -61,6 +92,20 @@
           },
           loop : true,
           autoplay:true,
+          breakpoints:{
+           320:{//当屏幕宽度大于等于320
+              slidesPerView: 1,
+           } ,
+           414: {  //当屏幕宽度大于等于414
+              slidesPerView: 2,
+            },
+            768: {  //当屏幕宽度大于等于768 
+              slidesPerView: 3,
+            },
+            992: {  //当屏幕宽度大于等于1280
+              slidesPerView: 4,
+            }   
+          }
         }
       }
     }

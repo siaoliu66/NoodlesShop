@@ -81,6 +81,7 @@
             left: 50%;
             color: #A46843;
             border-color: #A46843;
+            transform: translateX(-50%);
             &:hover{
                 color: #fff;
                 background-color: #A46843;

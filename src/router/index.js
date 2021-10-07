@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/front/index'
 import Menu from '@/components/front/menu'
+import Favorite from '@/components/front/favorite'
 import Login from '@/components/front/login'
 import Cart from '@/components/front/cart'
 import Checkout from '@/components/front/checkout_order'
@@ -46,6 +47,11 @@ export default new Router({
       path: '/aboutUs',
       name: 'About',
       component: About,
+    },
+    {
+      path: '/favorite',
+      name: 'favorite',
+      component: Favorite,
     },
     {
       path: '/checkout/:order_id',

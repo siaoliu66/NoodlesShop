@@ -6,6 +6,12 @@
     </div>
     <div class="wrap">
       <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#/index">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">關於我們</li>
+          </ol>
+        </nav>
         <h2>關於我們</h2>
         <div class="intro">
           <h3>牛老大的故事</h3>

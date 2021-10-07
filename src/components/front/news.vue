@@ -6,6 +6,12 @@
     </div>
     <div class="wrap">
       <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#/index">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">最新消息</li>
+          </ol>
+        </nav>
         <h2>最新消息</h2>
         <div class="newscontent">
           <div class="newslist">

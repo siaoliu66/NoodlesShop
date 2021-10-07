@@ -27,3 +27,11 @@ export default {
         }
 }
 </script>
+<style lang="scss" scoped>
+@media (max-width: 768px){
+    .navbar{
+        display: -webkit-box
+    }
+}
+    
+</style>

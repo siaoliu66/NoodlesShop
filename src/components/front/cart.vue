@@ -5,10 +5,10 @@
         <div class="header">
             <menubar/>
         </div>
-        <div class="cart_container">
-            <div class="row container" >
-                <div class="cart">
-                    <div class="col-md-3">
+        <div class="cart_container container">
+            <div class="row" >
+                <!-- <div class="cart"> -->
+                    <div class="col-md-4 cartlist">
                         <div class="card">
                             <div class="card-body" >
                                 <div class="card-title">
@@ -121,8 +121,8 @@
                                 </div>
                                 </ValidationObserver>
                             </div>
-                        </div>
-                </div>
+                    </div>
+                <!-- </div> -->
                 
             </div>
         </div>
@@ -131,49 +131,40 @@
 <style lang="scss" scoped>
     .cart_container{
         margin-top: 64px;
-        // background-color: #c4cbcf;
+        .row{
+            padding-top: 20px;
+            .title{
+                margin: 10px;
+                .circle{
+                    display: block;
+                    float: left;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #4f4032;
+                    color:#fff;
+                    text-align: center;
+                    line-height: 20px;
+                }
+                .text{
+                    margin-left: 10px;
+                }
+            }
+            .cart-group{
+                border-radius: 5px;
+                border: 1px solid #dee2e6;
+                margin: 8px;
+                padding: 10px;
+                .form-group{
+                    margin-left: 10px;  
+                }
+            }
+        }
     }
-    .del{
-        text-decoration: line-through;
-    }
-    .container{
-        margin: 0 auto;
-    }
-    .cart{
-        display: flex;
-        width: 100%;
-        padding-top: 35px;
-    }
-    .title{
-        margin: 10px;
-    }
-    .circle{
-        display: block;
-        float: left;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: #4f4032;
-        color:#fff;
-        text-align: center;
-        line-height: 20px;
-    }
-    .text{
-        margin-left: 10px;
-    }
-    .form-group{
-        margin-left: 10px;  
-    }
-    .cart-group{
-        border-radius: 5px;
-        border: 1px solid #dee2e6;
-        margin: 8px;
-        padding: 10px;
-    }
-    .fa-shopping-basket{
-        position: absolute;
-        top: 5%;
-        transform: translateX(50%);
+    @media  (max-width: 768px){
+        .cartlist{
+            margin: 0px 8px;
+        }
     }
 </style>
 <script>

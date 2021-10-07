@@ -13,9 +13,46 @@
             <i class="fas fa-shopping-basket"></i>
           </a>
         </div>
+        <!-- 我的最愛 -->
+        <div class="cart" style="bottom: 70px">
+          <a
+            href="#/favorite"
+            class=""
+            @click="category = 'fav'"
+            :class="{ active: category == 'fav' }"
+          >
+            <span class="cartsnum">{{ totalfav }}</span>
+            <i class="fas fa-heart"></i>
+          </a>
+        </div>
+
         <div class="container pt-4">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#/index">首頁</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                美味菜單
+              </li>
+            </ol>
+          </nav>
           <div class="row">
-            <div class="col-md-3 col-lg-2">
+            <div class=" col-md-3 col-lg-2">
+              <!-- 手機版分類選單 -->
+              <div class="form-mobile">
+                <select
+                  id="FormControlSelect1"
+                  class="form-control btn-secondary"
+                  v-model="category"
+                >
+                  <option value="all" @click="category = 'all'">全部</option>
+                  <option value="noodles" @click="category = 'noodles'">麵類</option>
+                  <option value="soup" @click="category = 'soup'">湯類</option>
+                  <option value="dumplings" @click="category = 'dumplings'">水餃類</option>
+                  <option value="vagetable" @click="category = 'vagetable'">滷味小菜</option>
+                  <label  for="FormControlSelect1">課程分類</label>
+                  </select>              
+                </div>
+                <!-- 手機版分類選單結束 -->
               <ul class="nav flex-column">
                 <li class="nav-item">
                   <a
@@ -62,12 +99,21 @@
                     >滷味小菜</a
                   >
                 </li>
+                <!-- <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    @click="category = 'fav'"
+                    :class="{ active: category == 'fav' }"
+                    >我的最愛</a
+                  >
+                </li> -->
               </ul>
             </div>
-            <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class=" col-md-9 col-lg-10 ml-sm-auto px-md-4">
               <div class="row mt-4">
                 <div
-                  class="col-md-4 mb-4"
+                  class="col-lg-4 col-md-6 mb-4"
                   v-for="item in filterProducts"
                   :key="item.id"
                 >
@@ -89,7 +135,11 @@
                       </h5>
                       <p class="card-text">{{ item.content }}</p>
                       <div
-                        class="d-flex justify-content-between align-items-baseline"
+                        class="
+                          d-flex
+                          justify-content-between
+                          align-items-baseline
+                        "
                       >
                         <div class="h5" v-if="!item.price">
                           {{ item.origin_price | currency }} 元
@@ -126,6 +176,12 @@
                         加到購物車
                       </button>
                     </div>
+                    <a class="fav" href="#" @click.prevent="addFavorite(item)">
+                      <i
+                        class="far fa-heart"
+                        :class="{ fas: fav.includes(item.id) }"
+                      ></i>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -159,13 +215,19 @@
             </button>
           </div>
           <div class="modal-body">
-            <img :src="product.imageUrl" class="img-fluid" alt="" />
-            <blockquote class="blockquote mt-3">
-              <p class="mb-0">{{ product.content }}</p>
-              <footer class="blockquote-footer text-right">
-                {{ product.category }}
-              </footer>
-            </blockquote>
+            <div
+              :style="{ backgroundImage: `url( ${product.imageUrl})` }"
+              class="img-fluid"
+              alt=""
+            />
+            <div
+              class="d-flex justify-content-between align-items-baseline m-3"
+            >
+              <p>{{ product.description }}</p>
+              <span class="badge badge-secondary float-right ml-2">{{
+                product.category
+              }}</span>
+            </div>
             <div class="d-flex justify-content-between align-items-baseline">
               <div class="h4" v-if="!product.price">
                 {{ product.origin_price | currency }} 元
@@ -173,11 +235,11 @@
               <del class="h6" v-if="product.price"
                 >原價 {{ product.origin_price | currency }} 元</del
               >
-              <div class="h4" v-if="product.price">
+              <div class="h5" v-if="product.price">
                 現在只要 {{ product.price | currency }} 元
               </div>
             </div>
-            <select name="" class="form-control mt-3" v-model="product.num">
+            <select name="" class="form-control mt-1" v-model="product.num">
               <option :value="num" v-for="num in 10" :key="num">
                 選購 {{ num }} {{ product.unit }}
               </option>
@@ -205,51 +267,30 @@
     <!-- productModal final -->
   </div>
 </template>
-
-  <style lang="scss" scoped>
-.web {
-  background-color: #c4cbcf;
-  min-height: 100vh !important;
-}
-.menu_container {
-  margin-top: 64px;
-}
+<style lang="scss" scoped>
 .nav {
   margin-top: 30px;
+  .nav-item {
+    font-size: 1.3em;
+  }
+  .active {
+    color: #fff;
+    background-color: #007bff;
+  }
 }
-.nav-item {
-  font-size: 1.3em;
+span.badge {
+  font-size: 1em;
 }
-.nav-item .active {
-  color: #fff;
-  background-color: #007bff;
+.img-fluid {
+  height: 310px;
+  background-size: cover;
+  background-position: center center;
 }
-.cart {
-  border-radius: 50%;
-  position: fixed;
-  bottom: 10%;
-  right: 3%;
-  background-color: #fff;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 40px;
-}
-.cartsnum {
-  position: absolute;
-  color: #fff;
-  font-size: 0.875rem;
-  background-color: #dc3545;
-  right: -7px;
-  top: -5px;
-  line-height: 1.5rem;
-  min-width: 1.5rem;
-  padding: 0 4px;
-  border-radius: 0.725rem;
-}
-.fa-shopping-basket {
-  font-size: 2em;
-  line-height: 60px;
+@media (max-width: 1140px) {
+  .h5,
+  .h6 {
+    font-size: 1em;
+  }
 }
 </style>
 <script>
@@ -272,6 +313,8 @@ export default {
       cart: {},
       conpon_code: "",
       category: "all",
+      storageArray: [],
+      fav: JSON.parse(localStorage.getItem("Favorite")) || [],
     };
   },
   methods: {
@@ -281,9 +324,16 @@ export default {
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
         console.log(response.data);
-        this.products = response.data.products;
+        // vm.products = response.data.products;
+        response.data.products.forEach((data) => {
+          if (data.is_enabled == 1) {
+            vm.products.push(data);
+          }
+        });
+        console.log(vm.products);
         vm.isLoading = false;
         vm.pagination = response.data.pagination;
+        this.getLocalStorage();
       });
     },
     getproduct(id) {
@@ -354,6 +404,27 @@ export default {
         }
       });
     },
+    addFavorite(item) {
+      const vm = this;
+      if (vm.storageArray.indexOf(item) === -1) {
+        vm.storageArray.push(item);
+      } else {
+        vm.storageArray.splice(vm.storageArray.indexOf(item), 1);
+      }
+      vm.fav = vm.storageArray.map((item) => item.id);
+      localStorage.setItem("Favorite", JSON.stringify(vm.fav));
+    },
+    getLocalStorage() {
+      const vm = this;
+      console.log(this.products);
+      vm.fav.forEach((item) => {
+        vm.products.forEach((data) => {
+          if (item === data.id) {
+            vm.storageArray.push(data);
+          }
+        });
+      });
+    },
   },
   created() {
     this.getproducts();
@@ -387,14 +458,16 @@ export default {
           }
         });
         return newsproducts;
-      } else {
+      } else if (this.category == "vagetable") {
         var newsproducts = [];
         this.products.forEach(function (item) {
-          if (item.category == "滷味小菜類") {
+          if (item.category == "滷味小菜") {
             newsproducts.push(item);
           }
         });
         return newsproducts;
+      } else {
+        return this.storageArray;
       }
     },
     totalQty: function () {
@@ -405,6 +478,13 @@ export default {
         });
       }
       return totalNum;
+    },
+    totalfav: function () {
+      var totalfav = 0;
+      if (this.storageArray) {
+        totalfav = this.storageArray.length;
+      }
+      return totalfav;
     },
   },
 };
