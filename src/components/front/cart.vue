@@ -40,7 +40,7 @@
                                 <thead class="thead-light">
                                     <th>品名</th>
                                     <th width="100">數量</th>
-                                    <th width="100">單價</th>
+                                    <th width="100">總價</th>
                                     <th width="100"></th>
                                 </thead>
                                 <tbody>

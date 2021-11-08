@@ -1,0 +1,29 @@
+.product{
+    margin-top: 64px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #a7a8bd;
+    .productImg{
+        margin: 10px auto;
+        height: 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .producttext {
+        .productcat{
+            font-size: 1em;
+            font-weight: normal;
+        }
+        .producttitle{
+            font-size: 1.5em;
+            font-weight: bolder;
+        }
+        .productdes{
+            font-size: 1.1em;
+            color: #1ba784;
+        }
+    }
+}
+.rommand{
+    margin-top: 10px;
+}

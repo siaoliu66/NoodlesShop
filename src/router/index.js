@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/front/index'
 import Menu from '@/components/front/menu'
+import Productpage from '@/components/front/productpage'
 import Favorite from '@/components/front/favorite'
 import Login from '@/components/front/login'
 import Cart from '@/components/front/cart'
@@ -14,6 +15,13 @@ import Product from '@/components/back/pages/products'
 import Orders from '@/components/back/pages/orders'
 import Coupon from '@/components/back/pages/coupon'
 Vue.use(Router)
+
+// 解决重复点击路由报错的BUG
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err)
+}
+
 
 export default new Router({
   routes: [
@@ -62,6 +70,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {//產品內頁
+      path: '/productpage/:product_id',
+      name: 'Productpage',
+      component: Productpage,
     },
     {
       path: '/admin',

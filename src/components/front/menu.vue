@@ -1,6 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
+    <alert></alert>
     <div class="web">
       <div class="header">
         <menubar />
@@ -99,15 +100,6 @@
                     >滷味小菜</a
                   >
                 </li>
-                <!-- <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    @click="category = 'fav'"
-                    :class="{ active: category == 'fav' }"
-                    >我的最愛</a
-                  >
-                </li> -->
               </ul>
             </div>
             <div class=" col-md-9 col-lg-10 ml-sm-auto px-md-4">
@@ -190,81 +182,6 @@
         </div>
       </div>
     </div>
-
-    <!-- productModal start -->
-    <div
-      class="modal fade"
-      id="productModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              {{ product.title }}
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div
-              :style="{ backgroundImage: `url( ${product.imageUrl})` }"
-              class="img-fluid"
-              alt=""
-            />
-            <div
-              class="d-flex justify-content-between align-items-baseline m-3"
-            >
-              <p>{{ product.description }}</p>
-              <span class="badge badge-secondary float-right ml-2">{{
-                product.category
-              }}</span>
-            </div>
-            <div class="d-flex justify-content-between align-items-baseline">
-              <div class="h4" v-if="!product.price">
-                {{ product.origin_price | currency }} 元
-              </div>
-              <del class="h6" v-if="product.price"
-                >原價 {{ product.origin_price | currency }} 元</del
-              >
-              <div class="h5" v-if="product.price">
-                現在只要 {{ product.price | currency }} 元
-              </div>
-            </div>
-            <select name="" class="form-control mt-1" v-model="product.num">
-              <option :value="num" v-for="num in 10" :key="num">
-                選購 {{ num }} {{ product.unit }}
-              </option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <div class="text-muted text-nowrap mr-3">
-              小計 <strong>{{ product.num * product.price }}</strong> 元
-            </div>
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click.prevent="addTocart(product.id, product.num)"
-            >
-              <i
-                class="fas fa-spinner fa-spin"
-                v-if="product.id === status.loadingItem"
-              ></i>
-              加到購物車
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- productModal final -->
   </div>
 </template>
 <style lang="scss" scoped>
@@ -295,11 +212,12 @@ span.badge {
 </style>
 <script>
 import menubar from "./topmenu";
+import alert from '../alertMesseges'
 import $ from "jquery";
 
 export default {
   components: {
-    menubar,
+    menubar,alert
   },
   data() {
     return {
@@ -338,15 +256,7 @@ export default {
     },
     getproduct(id) {
       const vm = this;
-      const url = `${process.env.APIPATH}/api/${process.env.APIID}/product/${id}`;
-      vm.status.loadingItem = id;
-      this.$http.get(url).then((response) => {
-        vm.product = response.data.product;
-        $("#productModal").modal("show");
-        console.log(response);
-        vm.status.loadingItem = "";
-        vm.product.num = 1; //預設數量
-      });
+      vm.$router.push(`/productpage/${id}`);
     },
     addTocart(id, qty = 1) {
       const vm = this;
@@ -384,32 +294,15 @@ export default {
         vm.isLoading = false;
       });
     },
-    addConponCode() {
-      const vm = this;
-      const url = `${process.env.APIPATH}/api/${process.env.APIID}/coupon`;
-      const code = {
-        code: vm.conpon_code,
-      };
-      vm.isLoading = true;
-      this.$http.post(url, { data: code }).then((response) => {
-        console.log(response.data);
-        if (response.data.success) {
-          vm.isLoading = false;
-          vm.conpon_code = "";
-          vm.getcartproduct();
-        } else {
-          vm.isLoading = false;
-          vm.conpon_code = "";
-          this.$bus.$emit("message:push", response.data.message, "warning");
-        }
-      });
-    },
     addFavorite(item) {
       const vm = this;
       if (vm.storageArray.indexOf(item) === -1) {
         vm.storageArray.push(item);
+        this.$bus.$emit('message:push',"已加入我的最愛",'success')
+        // console.log("已加入我的最愛")
       } else {
         vm.storageArray.splice(vm.storageArray.indexOf(item), 1);
+        this.$bus.$emit('message:push',"已從我的最愛移除",'warning')
       }
       vm.fav = vm.storageArray.map((item) => item.id);
       localStorage.setItem("Favorite", JSON.stringify(vm.fav));
