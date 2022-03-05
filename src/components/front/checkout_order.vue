@@ -3,73 +3,114 @@
     <div class="header">
       <menubar />
     </div>
-    <div class="container">
-      <form class="col-md-8 order" @submit.prevent="payOrder">
-        <h5>訂單資訊</h5>  
-        <table class="table">
+    <div class="container cart_container">
+      <h2 class="h2">訂單已成立</h2>
+      <div class="row justify-content-center cartHeader">
+        <div class="step col-md-8">
+          <div class="steplist">
+            <div class="circle"></div>
+            <span class="text-center">確認購物車</span>
+          </div>
+          <div class="line"></div>
+          <div class="steplist">
+            <div class="circle"></div>
+            <span class="text-center">填寫訂購資訊</span>
+          </div>
+          <div class="line"></div>
+          <div class="steplist">
+            <div class="circle"></div>
+            <span class="text-center">確認結帳</span>
+          </div>
+          <div class="line"></div>
+          <div class="steplist">
+            <div class="circle show"></div>
+            <span class="text-center">訂購成功</span>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center cartContent mb-3">
+        <div class="col-md-8 checkout">
+          <div class="title">訂單產品明細<a href="#" class="slide" @click="toggleClick()">
+            <i class="fas fa-angle-up" v-if="this.isOpen"></i>
+            <i class="fas fa-angle-down" v-else></i>
+          </a></div>
+          <div class="orderProduct"  style="display: none">
+            <table class="table">
+              <thead class="thead-light">
+                <th>商品圖片</th>
+                <th>商品名稱</th>
+                <th>購買數量</th>
+                <th>售價</th>
+                <th>總價</th>
+              </thead>
+              <tbody>
+                <tr v-for="item in order.products" :key="item.id" class="text-center">
+                  <td class="align-middle">
+                    <div class="cartimg" :style="{backgroundImage:`url(${item.product.imageUrl})`}"></div>
+                  </td>
+                  <td class="align-middle">
+                    {{ item.product.title }}
+                  </td>
+                  <td class="align-middle count">
+                      {{ item.qty }}
+                 </td>
+                  <td class="align-middle">
+                    {{ item.product.price | currency }}
+                  </td>
+                  <td class="align-middle">
+                    {{ item.final_total | currency }}
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                <th colspan="4" class="text-right">總計 : </th>
+                <th scope="col">{{ order.total | currency }}</th>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-8 checkorder">
+          <div class="title">訂單資訊</div>
+          <table class="table">
           <tbody>
             <tr>
               <th>訂單編號</th>
-              <td class="text-left">{{ order.id }}</td>
+              <td >{{ order.id }}</td>
             </tr>
             <tr>
-              <th>Email</th>
-              <td class="text-left">{{ order.user.email }}</td>
-            </tr>
-            <tr>
-              <th>姓名</th>
+              <th>顧客姓名</th>
               <td>{{ order.user.name }}</td>
             </tr>
             <tr>
-              <th>收件人電話</th>
+              <th>顧客電話</th>
               <td>{{ order.user.tel }}</td>
             </tr>
             <tr>
-              <th>收件人地址</th>
+              <th>顧客地址</th>
               <td>{{ order.user.address }}</td>
             </tr>
             <tr>
               <th>付款狀態</th>
               <td>
-                <span v-if="!order.is_paid">尚未付款</span>
+                <span v-if="!order.is_paid" class="text-danger">尚未付款</span>
                 <span v-else class="text-success">付款完成</span>
               </td>
             </tr>
           </tbody>
-        </table>
-        <h5>訂單產品明細</h5>
-        <table class="table">
-          <thead>
-            <th>品名</th>
-            <th>數量</th>
-            <th>單價</th>
-          </thead>
-          <tbody>
-            <tr v-for="item in order.products" :key="item.id">
-              <td class="align-middle">{{ item.product.title }}</td>
-              <td class="align-middle">
-                {{ item.qty }}/{{ item.product.unit }}
-              </td>
-              <td class="align-middle text-right">{{ item.final_total }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2" class="text-right">總計</td>
-              <td class="text-right">{{ order.total }}</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div class="text-right" v-if="order.is_paid === false">
-          <button class="btn btn-danger">確認付款去</button>
+        </table> 
+        <div class="row justify-content-center">
+          <button class="btn btn-outline-info" @click="payOrder" v-if="order.is_paid === false">確認付款去</button>
+          <router-link class="btn btn-primary" to="/index">回首頁</router-link>
         </div>
-      </form>
-      <div class="text-right" v-if="order.is_paid === true">
-        <router-link class="btn btn-danger" to="/index">回首頁</router-link>
+        </div>
       </div>
     </div>
+     <Footer />
   </div>
 </template>
+<style scoped src="@/assets/customcss/card.css"></style>
 <style lang="scss" scoped>
 .container {
   margin-top: 64px;
@@ -85,14 +126,17 @@
 </style>
 <script>
 import menubar from "./topmenu";
+import Footer from "./footer";
+import $ from "jquery"
 export default {
-  components: { menubar },
+  components: { menubar,Footer },
   data() {
     return {
       OrderId: "",
       order: {
         user: {},
       },
+      isOpen:false,
     };
   },
   methods: {
@@ -112,6 +156,10 @@ export default {
         vm.getOrder();
       });
     },
+    toggleClick(){
+      $('.orderProduct').slideToggle();
+      this.isOpen = !this.isOpen;
+    }
   },
   created() {
     this.OrderId = this.$route.params.order_id;

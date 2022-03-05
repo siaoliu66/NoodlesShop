@@ -1,30 +1,50 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
+    <div class="wrap">
+       <div class="title">訂單</div>
+      <div class="input-group search">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01"
+            >搜尋條件</label
+          >
+        </div>
+        <select
+          class="custom-select"
+          id="inputGroupSelect01"
+          v-model="searchType"
+        >
+          <option selected>Choose...</option>
+          <!-- <option value="createId" @click="searchType = 'createId'" 
+            >訂單編號</option
+          >-->
+          <option value="date" @click="searchType = 'date'">購買時間</option>
+          <option value="name" @click="searchType = 'name'">訂購人</option>
+        </select>
+        <input
+          type="text"
+          id="searchBox"
+          class="searchBox ml-2 border col-6"
+          v-model="searchVal"
+          v-if="searchType"
+        />
+      </div>
+    </div>
+    <div class="dcontent">
     <table class="table mt-4">
       <thead>
         <tr>
+          <th>功能</th>
+          <th>訂單編號</th>
           <th>購買時間</th>
-          <th>購買款項</th>
+          <th>顧客</th>
           <th>訂單金額</th>
           <th>是否附款</th>
-          <th>功能</th>
+          <th>訂單狀況</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in lists" :key="item.id">
-          <td>{{ item.create_at }}</td>
-          <td>
-            <ul class="list-unstyled">
-              <li v-for="productitem in item.products" :key="productitem.id">
-                {{ productitem.product.title }} : {{ productitem.qty
-                }}{{ productitem.product.unit }}
-              </li>
-            </ul>
-          </td>
-          <td>{{ item.total | currency }}</td>
-          <td v-if="item.is_paid" class="text-success">已付款</td>
-          <td v-else class="text-danger">尚未付款</td>
+        <tr v-for="item in filterlist" :key="item.id">
           <td>
             <button
               class="btn btn-outline-secondary btn-sm"
@@ -33,16 +53,24 @@
               查看
             </button>
             <button
-              class="btn btn-outline-primary btn-sm" v-if="!item.is_paid"
+              class="btn btn-outline-primary btn-sm"
               @click="editerModal(item)"
             >
               編輯
             </button>
           </td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.create_at }}</td>
+          <td>{{ item.user.name }}</td>
+          <td>{{ item.total | currency }}</td>
+          <td v-if="item.is_paid" class="text-success">已付款</td>
+          <td v-else class="text-danger">尚未付款</td>
+          <th>{{ item.user.status }}</th>
         </tr>
       </tbody>
     </table>
-<pagination :pages="pagination" @emit-page="getOrders" />
+    <pagination :pages="pagination" @emit-page="getOrders" />
+    </div>
     <!-- 查看 -->
     <div
       class="modal fade"
@@ -125,7 +153,7 @@
             </div>
             <div class="border rounded m-2">
               <div class="product_title">訂單內容</div>
-              <table class="table">
+              <table class="table mb-2">
                 <thead>
                   <th>品名</th>
                   <th>數量</th>
@@ -143,10 +171,14 @@
                   </tr>
                 </tbody>
                 <tfoot>
-                  <!-- <tr>
-                                <td colspan="2" class="text-right">優惠券折扣</td>
-                                <td class="text-right" >{{ filtercoupon }}</td>
-                            </tr> -->
+                  <tr v-if="filtercoupon - tempProduct.total !=0">
+                    <td colspan="2" class="text-right">小計</td>
+                    <td class="text-right" >{{ filtercoupon | currency}}</td>
+                  </tr>
+                  <tr v-if="filtercoupon - tempProduct.total !=0">
+                    <td colspan="2" class="text-right">優惠券折扣</td>
+                    <td class="text-right text-success" >- {{ filtercoupon - tempProduct.total | currency}}</td>
+                  </tr>
                   <tr>
                     <td colspan="2" class="text-right">總計</td>
                     <td class="text-right">
@@ -197,28 +229,36 @@
             <div class="border rounded m-2">
               <div class="order_title">訂購資訊</div>
               <table class="table order">
-               <tbody v-if="tempProduct.user">
-                <tr>
+                <tbody v-if="tempProduct.user">
+                  <tr>
                     <th scope="row">訂購人</th>
-                    <td>{{ tempProduct.user.name }}</td>
+                    <td>
+                      <input type="text" v-model="tempProduct.user.name" />
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">收件地址</th>
-                    <td>{{ tempProduct.user.address }}</td>
+                    <td>
+                      <input type="text" v-model="tempProduct.user.address" />
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">聯絡電話</th>
-                    <td>{{ tempProduct.user.tel }}</td>
+                    <td>
+                      <input type="text" v-model="tempProduct.user.tel" />
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">電子郵件</th>
-                    <td>{{ tempProduct.user.email }}</td>
+                    <td>
+                      <input type="text" v-model="tempProduct.user.email" />
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">備註</th>
-                    <td>{{ tempProduct.message }}</td>
+                    <td><input type="text" v-model="tempProduct.message" /></td>
                   </tr>
-                </tbody> 
+                </tbody>
               </table>
             </div>
             <div class="border rounded m-2">
@@ -227,7 +267,9 @@
                 <tbody>
                   <tr>
                     <th scope="row">訂購日期</th>
-                    <td>{{ tempProduct.create_at }}</td>
+                    <td>
+                      {{tempProduct.create_at}}
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">總金額</th>
@@ -239,7 +281,12 @@
                       <span v-if="tempProduct.is_paid" class="text-success"
                         >付款成功</span
                       >
-                      <span v-else class="text-danger">未付款 <button class="btn btn-warning" @click="payOrder()">進行付款</button></span>
+                      <span v-else class="text-danger"
+                        >未付款
+                        <button class="btn btn-warning" @click="payOrder()">
+                          進行付款
+                        </button></span
+                      >
                     </td>
                   </tr>
                   <tr v-if="tempProduct.is_paid">
@@ -269,10 +316,14 @@
                   </tr>
                 </tbody>
                 <tfoot>
-                  <!-- <tr>
-                                <td colspan="2" class="text-right">優惠券折扣</td>
-                                <td class="text-right" >{{ filtercoupon }}</td>
-                            </tr> -->
+                  <tr v-if="filtercoupon - tempProduct.total !=0">
+                    <td colspan="2" class="text-right">小計</td>
+                    <td class="text-right" >{{ filtercoupon | currency}}</td>
+                  </tr>
+                  <tr v-if="filtercoupon - tempProduct.total !=0">
+                    <td colspan="2" class="text-right">優惠券折扣</td>
+                    <td class="text-right text-success" >- {{ filtercoupon - tempProduct.total | currency}}</td>
+                  </tr>
                   <tr>
                     <td colspan="2" class="text-right">總計</td>
                     <td class="text-right">
@@ -291,13 +342,13 @@
             >
               取消
             </button>
-            <!-- <button
+            <button
               type="button"
               class="btn btn-primary"
               @click="updateOrders()"
             >
               確認
-            </button> -->
+            </button>
           </div>
         </div>
       </div>
@@ -331,21 +382,43 @@
     }
   }
 }
+#editerModal {
+  .table {
+    td {
+      padding: 0.5rem;
+      input,
+      .form-control {
+        width: 75%;
+        font-family: inherit;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        color: #565656;
+        height: 30px;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        padding: 0;
+        padding: 5px;
+      }
+    }
+  }
+}
 </style>
 <script>
 import $ from "jquery";
-import pagination from '@/components/pagination'
+import pagination from "@/components/pagination";
 
 export default {
-    components:{
-        pagination
-    },
+  components: {
+    pagination
+  },
   data() {
     return {
       lists: [],
       tempProduct: {},
       isLoading: false,
-      pagination:{}
+      pagination: {},
+      searchType: "",
+      searchVal: "",
     };
   },
   methods: {
@@ -353,13 +426,12 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.APIID}/admin/orders?page=${page}`;
       (vm.isLoading = true),
-        this.$http.get(api).then((response) => {
+        this.$http.get(api).then(response => {
           console.log(response);
           vm.isLoading = false;
           vm.lists = response.data.orders;
-          vm.pagination = response.data.pagination
-
-          vm.lists.forEach((item) => {
+          vm.pagination = response.data.pagination;
+          vm.lists.forEach(item => {
             const dates1 = new Date(item.create_at * 1000);
             const year = dates1.getFullYear();
             const month = dates1.getMonth() + 1;
@@ -371,16 +443,34 @@ export default {
             const date2 = dates2.getDate();
             item.paid_date = `${year2}/${month2}/${date2}`;
           }); //讓Unix Timestamp轉回一般日期格式顯示
+          console.log( vm.lists[0] )
         });
     },
-    payOrder(){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.APIID}/pay/${vm.tempProduct.id}`
-            this.$http.post(url).then((response) => {                
-                console.log(response.data);
-                this.getOrders();
-            });
-        },
+    updateOrders() {
+      const vm = this;
+      vm.isLoading = true;
+      vm.tempProduct.create_at = Math.floor(
+        new Date(vm.tempProduct.create_at) / 1000
+      );
+      vm.tempProduct.paid_date = Math.floor(
+        new Date(vm.tempProduct.paid_date) / 1000
+      );
+      const url = `${process.env.APIPATH}/api/${process.env.APIID}/admin/order/${vm.tempProduct.id}`;
+      this.$http.put(url, { data: vm.tempProduct }).then(response => {
+        console.log(response.data);
+        this.getOrders();
+        vm.isLoading = false;
+        $("#editerModal").modal("hide");
+      });
+    },
+    payOrder() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.APIID}/pay/${vm.tempProduct.id}`;
+      this.$http.post(url).then(response => {
+        console.log(response.data);
+        this.getOrders();
+      });
+    },
     openModal(item) {
       this.tempProduct = Object.assign({}, item);
       $("#ordersModal").modal("show");
@@ -388,10 +478,54 @@ export default {
     editerModal(item) {
       this.tempProduct = Object.assign({}, item);
       $("#editerModal").modal("show");
-    },
+    }
   },
   created() {
     this.getOrders();
   },
+  computed: {
+    filterlist: function() {
+      const vm = this;
+      if (vm.searchVal == "") {
+        return vm.lists;
+      } else {
+        var filterlist = [];
+        if (vm.searchType == "createId") {
+          vm.lists.forEach(function(item) {
+            if (item.id.indexOf(vm.searchVal) != -1) {
+              filterlist.push(item);
+            }
+          });
+          return filterlist;
+        } else if (vm.searchType == "date") {
+          vm.lists.forEach(function(item) {
+            if (item.create_at.indexOf(vm.searchVal) != -1) {
+              filterlist.push(item);
+            }
+          });
+          return filterlist;
+        } else if (vm.searchType == "name") {
+          vm.lists.forEach(function(item) {
+            if (item.user.name.indexOf(vm.searchVal) != -1) {
+              filterlist.push(item);
+            }
+          });
+          return filterlist;
+        }
+      }
+    },
+    filtercoupon:function(){
+      var filtercoupon = 0;
+      var obj = this.tempProduct.products
+      if(obj){
+        var arr = Object.values(obj)
+        arr.forEach(item=>{
+        filtercoupon += item.total
+      })
+      return filtercoupon 
+      }
+      return filtercoupon 
+    }
+  }
 };
 </script>

@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.8",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "jquery": "^3.5.1",
@@ -17,12 +18,14 @@
     "popper.js": "^1.16.1",
     "sass-loader": "^7.1.0",
     "swiper": "^6.4.11",
+    "tinymce": "^5.10.3",
     "vee-validate": "^3.4.5",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^3.2.4",
     "vue-loading-overlay": "^3.4.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-sweetalert2": "^5.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

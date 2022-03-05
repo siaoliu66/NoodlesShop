@@ -1,29 +1,58 @@
-.product{
-    margin-top: 64px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #a7a8bd;
-    .productImg{
-        margin: 10px auto;
-        height: 300px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .producttext {
-        .productcat{
-            font-size: 1em;
-            font-weight: normal;
+.product_wrap{
+    .container{
+        margin-top: 60px;
+        .breadcrumb{
+            background: none;
+        } 
+        .product{
+            padding-bottom: 35px;
+            border-bottom: 1px solid #a7a8bd;
+            .productImg{
+                margin: 10px auto;
+                height: 300px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .producttext {
+                .productcat{
+                    font-size: 1.1em;
+                    font-weight: normal;
+                }
+                .producttitle{
+                    font-size: 2.2em;
+                    font-weight: bolder;
+                }
+                .productdes{
+                    font-size: 1.2em;
+                    color: #5a6462;
+                    letter-spacing: 1px;
+                }
+                .addcart,.FavBtn{
+                    margin-right: 10px;
+                    font-size: 0.875rem;
+                }
+                .count{
+                    width: 50%;
+                    .remove{
+                        border-top-right-radius: 0px;
+                        border-bottom-right-radius: 0px;
+                    }
+                    .add{
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 0px;
+                    }
+                }
+            }
         }
-        .producttitle{
-            font-size: 1.5em;
-            font-weight: bolder;
-        }
-        .productdes{
-            font-size: 1.1em;
-            color: #1ba784;
+        .rommand{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            .container {
+                margin-top: 0;
+            }
         }
     }
 }
-.rommand{
-    margin-top: 10px;
-}
+
+

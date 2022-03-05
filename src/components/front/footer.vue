@@ -5,6 +5,9 @@
           牛老大餐飲國際股份有限公司<br /><em
             >Niulauda International CO., Ltd.</em
           >
+          <router-link  to="/login" target="_blank" title="系統管理員登入">
+          <i class="fas fa-user-cog fa-lg text-secondary ml-2"></i>
+        </router-link>
         </div>
         <div class="footer-link">
           <a

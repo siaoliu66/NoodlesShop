@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
     data () {
         return {
@@ -37,7 +38,7 @@ export default {
                     this.$router.push("/admin/products")
                 }else{
                     alert(response.data.message)
-                    document.querySelector('#inputEmail').value='';
+                    // document.querySelector('#inputEmail').value='';
                     document.querySelector('#inputPassword').value=''
                 }
             })

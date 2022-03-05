@@ -1,11 +1,12 @@
 <template>
   <div>
-    <intro-swiper></intro-swiper>
+    <!-- <intro-swiper></intro-swiper> -->
+    <div class="banner"></div>
     <div class="header">
-      <menubar />
+      <menubar :cartnum.sync="totalQty" :favnum.sync="totalfav"></menubar>
     </div>
     <div class="wrap">
-      <div class="container">
+      <div class="container pt-4">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#/index">首頁</a></li>
@@ -49,10 +50,6 @@
               <p>07-6461235</p>
               <div class="contactTitle">營業時間</div>
               <p>10:30~21:00 周一店休</p>
-              <div class="contactTitle">外送夥伴</div>
-              <p><a class="icon-uber" href="https://www.ubereats.com/tw/store/%E7%89%9B%E8%80%81%E5%A4%A7%E7%89%9B%E8%82%89%E9%BA%B5/JRva7uMFQWmtNU-zFQhuzw?pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMiVFNSVBRCU5RiVFNSVBRCU5MCVFOCVCNyVBRjM1OCVFOCU5OSU5RiUyMiUyQyUyMnJlZmVyZW5jZSUyMiUzQSUyMkNoSUo5eWZwZGhJRmJqUVJqLWQ2UjJIU0NMayUyMiUyQyUyMnJlZmVyZW5jZVR5cGUlMjIlM0ElMjJnb29nbGVfcGxhY2VzJTIyJTJDJTIybGF0aXR1ZGUlMjIlM0EyMi42NzUyODE5JTJDJTIybG9uZ2l0dWRlJTIyJTNBMTIwLjMwOTIyNzglN0Q%3D&utm_campaign=place-action-link&utm_medium=organic&utm_source=google" target="_blank" title="Uber Eats">Uber Eats</a>
-              <a class="icon-foodpanda" href="https://www.foodpanda.com.tw/restaurant/t5hz/niu-lao-da-niu-rou-mian?utm_source=google&utm_medium=organic&utm_campaign=google_reserve_place_order_action" target="_blank" title="foodpandas">foodpanda</a>
-              </p>
             </div>
           </div>
         </div>
@@ -74,5 +71,74 @@ export default {
     swiper2,
     Footer,
   },
+  data() {
+    return {
+      cart: {},
+      products: [],
+      storageArray: [],
+      fav: JSON.parse(localStorage.getItem("Favorite")) || []
+    };
+  },
+  methods: {
+    getcartproduct() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.APIID}/cart`;
+      vm.isLoading = true;
+      this.$http.get(url).then(response => {
+        vm.cart = response.data.data;
+        console.log(response.data.data.carts);
+        vm.isLoading = false;
+      });
+    },
+        getproducts() {
+      const api = `${process.env.APIPATH}/api/${process.env.APIID}/products/all`;
+      const vm = this;
+      vm.isLoading = true;
+      this.$http.get(api).then((response) => {
+        response.data.products.forEach((data) => {
+          if (data.is_enabled == 1 && data.id !== vm.product_id) {
+            vm.products.push(data);
+            // console.log(data)
+          }
+        });
+        console.log(vm.products)
+        vm.isLoading = false;
+        this.getLocalStorage();
+      });
+    },
+    getLocalStorage() {
+      const vm = this;
+      console.log(this.products);
+      vm.fav.forEach(item => {
+        vm.products.forEach(data => {
+          if (item === data.id) {
+            vm.storageArray.push(data);
+          }
+        });
+      });
+    }
+  },
+  created() {
+    this.getcartproduct();
+    this.getproducts();
+  },
+  computed: {
+    totalQty: function() {
+      var totalNum = 0;
+      if (this.cart.carts) {
+        this.cart.carts.forEach(function(item) {
+          totalNum += item.qty;
+        });
+      }
+      return totalNum;
+    },
+    totalfav: function() {
+      var totalfav = 0;
+      if (this.storageArray) {
+        totalfav = this.storageArray.length;
+      }
+      return totalfav;
+    }
+  }
 };
 </script>

@@ -82,7 +82,7 @@ router.beforeEach((to, from, next) => {
   if(to.meta.requiresAuth){
     const api = `${process.env.APIPATH}/api/user/check`
     axios.post(api).then((response) => {
-        console.log(response.data)
+        console.log(response)
         if(response.data.success){
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
@@ -95,3 +95,12 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+//alert套件
+import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+Vue.use(VueSweetalert2);
+
+

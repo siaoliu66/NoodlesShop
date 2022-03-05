@@ -7,6 +7,8 @@ import Productpage from '@/components/front/productpage'
 import Favorite from '@/components/front/favorite'
 import Login from '@/components/front/login'
 import Cart from '@/components/front/cart'
+import BuyerForm from '@/components/front/buyerForm'
+import OrderConfirm from '@/components/front/orderConfirm'
 import Checkout from '@/components/front/checkout_order'
 import News from '@/components/front/news'
 import About from '@/components/front/aboutUs'
@@ -14,6 +16,7 @@ import dashboard from '@/components/back/dashboard'
 import Product from '@/components/back/pages/products'
 import Orders from '@/components/back/pages/orders'
 import Coupon from '@/components/back/pages/coupon'
+import editor from '@/components/back/pages/editor'
 Vue.use(Router)
 
 // 解决重复点击路由报错的BUG
@@ -45,6 +48,16 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart,
+    },
+    {
+      path: '/buyerForm',
+      name: 'BuyerForm',
+      component: BuyerForm,
+    },
+    {
+      path: '/orderConfirm',
+      name: 'OrderConfirm',
+      component: OrderConfirm,
     },
     {
       path: '/news',
@@ -97,6 +110,12 @@ export default new Router({
           path: 'coupon',
           name: 'Coupon',
           component: Coupon,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'editor/:product_id',
+          name: 'editor',
+          component: editor,
           meta: { requiresAuth: true },
         },
       ]

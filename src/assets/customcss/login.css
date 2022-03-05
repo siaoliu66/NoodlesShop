@@ -1,7 +1,8 @@
 .signin {
   height: 100vh;
-  background: -webkit-gradient(linear, left bottom, right top, from(#d16ba5), color-stop(#c777b9), color-stop(#ba83ca), color-stop(#aa8fd8), color-stop(#9a9ae1), color-stop(#52cffe), to(#41dfff));
-  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #52cffe, #41dfff);
+  background-image: url("https://cdn.pixabay.com/photo/2021/11/28/16/27/nature-6830717_960_720.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,6 +12,9 @@
   margin: auto;
   width: 100%;
   max-width: 350px;
+  background-color: rgba(173, 171, 171, 0.6);
+  border-radius: 5px;
+  padding: 3%;
 }
 
 .signin .login h1 {
@@ -43,7 +47,7 @@
   height: 35px;
   text-align: center;
   font-size: 16px;
-  background-color: rgba(123, 123, 123, 0.75);
+  background-color: #86A8E7;
   border-radius: 10px;
   font-size: 20px;
   font-weight: 900;
@@ -56,6 +60,6 @@
 }
 
 .signin .login .btn-sign:hover {
-  background-color: #86A8E7;
+  background-color: #6f8cc2;
 }
 /*# sourceMappingURL=login.css.map */

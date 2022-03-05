@@ -2,7 +2,7 @@
   <div>
     <intro-swiper></intro-swiper>
     <div class="header">
-      <menubar />
+      <menubar :cartnum.sync="totalQty" :favnum.sync="totalfav"></menubar>
     </div>
     <div class="wrap">
       <div class="container">
@@ -44,7 +44,7 @@
     </div>
   </div>
 </template>
-<style scoped  src="@/assets/customcss/news.css"></style>
+<style scoped src="@/assets/customcss/news.css"></style>
 
 <script>
 import menubar from "./topmenu";
@@ -56,8 +56,38 @@ export default {
   components: {
     menubar,
     swiper2,
-    Footer,
+    Footer
   },
+  data() {
+    return {
+      cart: {},
+    };
+  },
+  methods: {
+    getcartproduct() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.APIID}/cart`;
+      vm.isLoading = true;
+      this.$http.get(url).then(response => {
+        vm.cart = response.data.data;
+        console.log(response.data.data.carts);
+        vm.isLoading = false;
+      });
+    }
+  },
+  created() {
+    this.getcartproduct();
+  },
+  computed: {
+    totalQty: function() {
+      var totalNum = 0;
+      if (this.cart.carts) {
+        this.cart.carts.forEach(function(item) {
+          totalNum += item.qty;
+        });
+      }
+      return totalNum;
+    }
+  }
 };
 </script>
-
