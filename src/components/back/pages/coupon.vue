@@ -1,11 +1,9 @@
 <template>
     <div>
         <loading :active.sync="isLoading"></loading>
-        <div class="row justify-content-between wrap"> 
-            <div class="title">優惠券</div>
-            <button class="btn btn-primary btn-sm" @click="openModal(true)">新增</button>
+        <div class="text-right mt-4">
+            <button class="btn btn-primary" @click="openModal(true)">建立新的優惠券</button>
         </div>
-        <div class="dcontent">
         <table class="table mt-4">
             <thead>
                 <tr>
@@ -34,7 +32,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+        
         <!-- Modal -->
         <div class="modal fade" id="ordersModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">

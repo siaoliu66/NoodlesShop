@@ -131,7 +131,15 @@ body{
                     display: none;
                 }
             }
-            
+            @media screen and (max-width: 414px) {
+                display: block;
+                li{
+                    margin-bottom: 10px;
+                    &::after{
+                        display: none;
+                    }
+                }
+            }
         }
         .footer-link{
             display: flex;

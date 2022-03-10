@@ -158,6 +158,18 @@ body .breadcrumb .breadcrumb-item a {
   display: none;
 }
 
+@media screen and (max-width: 414px) {
+  .footer .footer-menu .footerbar {
+    display: block;
+  }
+  .footer .footer-menu .footerbar li {
+    margin-bottom: 10px;
+  }
+  .footer .footer-menu .footerbar li::after {
+    display: none;
+  }
+}
+
 .footer .footer-menu .footer-link {
   display: -webkit-box;
   display: -ms-flexbox;

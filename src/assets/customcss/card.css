@@ -103,6 +103,12 @@
   margin-left: 10px;
 }
 
+@media screen and (max-width: 414px) {
+  .cart_container .cartContent .cart-group .none {
+    display: none;
+  }
+}
+
 .cart_container .cartContent .product .title {
   font-size: 1.25rem;
   font-weight: bold;

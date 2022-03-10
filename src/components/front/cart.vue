@@ -37,16 +37,16 @@
           <div class="cart-group">
             <table class="table">
               <thead class="thead-light">
-                <th>商品圖片</th>
+                <th class="none">商品圖片</th>
                 <th>商品名稱</th>
                 <th>購買數量</th>
-                <th>售價</th>
+                <th class="none">售價</th>
                 <th>總價</th>
                 <th></th>
               </thead>
               <tbody>
                 <tr v-for="item in cart.carts" :key="item.id" class="text-center">
-                  <td class="align-middle">
+                  <td class="align-middle none">
                     <div class="cartimg" :style="{backgroundImage:`url(${item.product.imageUrl})`}"></div>
                   </td>
                   <td class="align-middle">
@@ -55,7 +55,7 @@
                   <td class="align-middle count">
                       {{ item.qty }}
                  </td>
-                  <td class="align-middle">
+                  <td class="align-middle  none">
                     {{ item.product.price | currency }}
                   </td>
                   <td class="align-middle"  :class="{'text-success' : item.coupon}">

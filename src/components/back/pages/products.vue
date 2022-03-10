@@ -1,9 +1,9 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="wrap">
-      <div class="title">產品</div>
-       <div class="input-group search">
+
+    <div class="m-4 row justify-content-between">
+      <div class="input-group col-8">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01"
             >搜尋條件</label
@@ -30,6 +30,7 @@
           v-if="searchType"
         />
       </div>
+
       <button
         class="btn btn-primary btn-sm"
         @click="addProduct(true, pagination.current_page)"
@@ -37,19 +38,27 @@
         建立新的商品
       </button>
     </div>
-    <div class="dcontent">
-      <table class="table mt-4">
+    <table class="table mt-4">
       <thead>
         <tr>
-          <th>功能</th>
           <th>分類</th>
           <th>商品名稱</th>
           <th>原價</th>
           <th>是否啟用</th>
+          <th>功能</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in filterProducts" :key="item.id">
+          <td>{{ item.category }}</td>
+          <td>{{ item.title }}</td>
+          <td>
+            {{ item.price | currency }}
+          </td>
+          <td>
+            <span v-if="item.is_enabled" class="text-success">啟用</span>
+            <span v-else>未啟用</span>
+          </td>
           <td>
             <button
               class="btn btn-outline-primary btn-sm"
@@ -64,22 +73,10 @@
               刪除
             </button>
           </td>
-          <td>{{ item.category }}</td>
-          <td>{{ item.title }}</td>
-          <td>
-            {{ item.price | currency }}
-          </td>
-          <td>
-            <span v-if="item.is_enabled" class="text-success">啟用</span>
-            <span v-else>未啟用</span>
-          </td>
-          
         </tr>
       </tbody>
     </table>
     <pagination :pages="pagination" @emit-page="getProducts" />
-    </div>
-    
 
     <!-- del Modal -->
     <div
@@ -262,7 +259,7 @@ export default {
           });
           return filterlist;
         } else if (vm.searchType == "category") {
-          vm.products.forEach(function(item) {
+          vm.lists.forEach(function(item) {
             if (item.category.indexOf(vm.searchVal) != -1) {
               filterlist.push(item);
             }

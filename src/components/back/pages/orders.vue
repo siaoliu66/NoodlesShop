@@ -1,9 +1,8 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="wrap">
-       <div class="title">訂單</div>
-      <div class="input-group search">
+    <div class="m-4 row justify-content-between">
+      <div class="input-group">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01"
             >搜尋條件</label
@@ -15,9 +14,9 @@
           v-model="searchType"
         >
           <option selected>Choose...</option>
-          <!-- <option value="createId" @click="searchType = 'createId'" 
+          <option value="createId" @click="searchType = 'createId'"
             >訂單編號</option
-          >-->
+          >
           <option value="date" @click="searchType = 'date'">購買時間</option>
           <option value="name" @click="searchType = 'name'">訂購人</option>
         </select>
@@ -30,7 +29,6 @@
         />
       </div>
     </div>
-    <div class="dcontent">
     <table class="table mt-4">
       <thead>
         <tr>
@@ -70,7 +68,6 @@
       </tbody>
     </table>
     <pagination :pages="pagination" @emit-page="getOrders" />
-    </div>
     <!-- 查看 -->
     <div
       class="modal fade"

@@ -7,7 +7,7 @@
 }
 
 .product_wrap .container .product {
-  padding-bottom: 10px;
+  padding-bottom: 35px;
   border-bottom: 1px solid #a7a8bd;
 }
 
@@ -30,13 +30,14 @@
 }
 
 .product_wrap .container .product .producttext .productdes {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #5a6462;
-  font-weight: bolder;
+  letter-spacing: 1px;
 }
 
-.product_wrap .container .product .producttext .addcart {
+.product_wrap .container .product .producttext .addcart, .product_wrap .container .product .producttext .FavBtn {
   margin-right: 10px;
+  font-size: 0.875rem;
 }
 
 .product_wrap .container .product .producttext .count {
@@ -54,7 +55,8 @@
 }
 
 .product_wrap .container .rommand {
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .product_wrap .container .rommand .container {

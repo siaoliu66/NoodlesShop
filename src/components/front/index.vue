@@ -123,6 +123,9 @@
   &:hover {
     color: #ff0;
   }
+   @media screen and (max-width: 414px) {
+         top: 40%;
+  }
 }
 .slide-prev{
     left: 10px;

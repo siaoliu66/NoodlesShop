@@ -70,11 +70,11 @@
         .form-group {
           margin-left: 10px;
         }
-        // .count{
-        //     display: flex;
-        //     justify-content: space-around;
-        //     align-items: center;
-        // }
+        @media screen and (max-width: 414px) {
+          .none{
+            display: none;
+          }
+        }
       }
       .product{
         .title{
