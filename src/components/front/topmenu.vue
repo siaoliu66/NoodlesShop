@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <h1><router-link class="logo" to="/index"><img :src="`./static/img/logo.jpg`"></router-link>
+    <h1><router-link class="logo" to="/index"><img :src="`./static/img/logo.png`"></router-link>
     </h1>
     <ul class="menubar" :class="{'active': showTopMenu}">
       <li>
